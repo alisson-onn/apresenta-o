@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SafeCore AI — Segurança do Trabalho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1F3C;--blue:#1A4FD6;--lblue:#EDF1FC;--dblue:#0C447C;
+  --teal:#1D9E75;--lteal:#E1F5EE;--amber:#EF9F27;--lamber:#FAEEDA;
+  --red:#E24B4A;--lred:#FCEBEB;--purple:#534AB7;
+  --white:#ffffff;--off:#F5F4F0;--gray:#6B6A65;--lgray:#E0DFD9;
+  --dark:#0A0F1E;--dark2:#111827;--dark3:#1F2937;--dark4:#374151;
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+  --r:10px;--rl:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--dark);color:var(--white);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,15,30,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 28px}
+.ni{max-width:1080px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.bi{width:30px;height:30px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.bi svg{width:16px;height:16px;fill:white}
+.bn{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--white);letter-spacing:-.3px}
+.bn em{color:#60A5FA;font-style:normal}
+.ntabs{display:flex;gap:4px}
+.ntab{font-family:var(--fb);font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;border:none;background:transparent;color:rgba(255,255,255,0.45);cursor:pointer;transition:all .2s}
+.ntab:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+.ntab.active{background:var(--blue);color:var(--white)}
+.nbadge{font-size:9px;background:#1D9E75;color:white;padding:2px 6px;border-radius:8px;margin-left:5px;font-weight:700}
+
+/* PAGES */
+.page{display:none}.page.active{display:block}
+
+/* ═══ SEARCH PAGE ═══════════════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,80%,100%{opacity:.25;transform:scale(.75)}40%{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.sp{max-width:680px;margin:0 auto;padding:0 20px 80px}
+
+/* Hero — colapsa após busca */
+.hero{padding:52px 0 36px;text-align:center;transition:all .35s ease}
+.hero.collapsed{padding:24px 0 20px}
+.hero.collapsed .hero-sub{display:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.8px;text-transform:uppercase}
+.hero-eyebrow i{width:4px;height:4px;background:var(--teal);border-radius:50%;display:inline-block}
+.hero h1{font-family:var(--fh);font-size:30px;font-weight:800;letter-spacing:-.8px;line-height:1.15;margin-bottom:10px}
+.hero h1 b{color:#60A5FA;font-style:normal;font-weight:800}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.38);line-height:1.75;max-width:420px;margin:0 auto}
+
+/* Search input */
+.search-wrap{position:relative;margin-bottom:12px}
+.search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 52px 14px 18px;font-family:var(--fb);font-size:14px;color:var(--white);outline:none;transition:border-color .2s,background .2s;resize:none;line-height:1.55;display:block;min-height:52px;max-height:160px;overflow-y:auto}
+.search-input::placeholder{color:rgba(255,255,255,.22)}
+.search-input:focus{border-color:rgba(26,79,214,.6);background:rgba(255,255,255,.05)}
+.search-submit{position:absolute;right:10px;bottom:10px;width:32px;height:32px;background:var(--blue);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.search-submit:hover{background:#2563EB;transform:scale(1.05)}
+.search-submit:disabled{opacity:.4;cursor:default;transform:none}
+.search-submit svg{width:15px;height:15px;fill:none;stroke:white;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Filtros inline minimalistas */
+.filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.filter-label{font-size:10px;color:rgba(255,255,255,.25);margin-right:2px;white-space:nowrap}
+.ftag{font-family:var(--fb);font-size:10.5px;padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:transparent;color:rgba(255,255,255,.35);cursor:pointer;transition:all .15s;white-space:nowrap}
+.ftag:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.18)}
+.ftag.on{background:rgba(26,79,214,.15);border-color:rgba(26,79,214,.35);color:#93C5FD}
+
+/* Histórico de sessão */
+.history-section{margin-bottom:20px}
+.history-label{font-size:10px;color:rgba(255,255,255,.22);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.history-label svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.8}
+.history-chips{display:flex;gap:5px;flex-wrap:wrap}
+.hchip{font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.06);border-radius:6px;cursor:pointer;color:rgba(255,255,255,.35);background:transparent;transition:all .12s;white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis;font-family:var(--fb)}
+.hchip:hover{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.65)}
+
+/* Sugestões (estado inicial) */
+.suggestions{margin-bottom:28px}
+.sug-label{font-size:10px;color:rgba(255,255,255,.22);margin-bottom:8px}
+.sug-chips{display:flex;gap:5px;flex-wrap:wrap}
+.schip{font-size:11.5px;padding:5px 12px;border:1px solid rgba(255,255,255,.07);border-radius:8px;cursor:pointer;color:rgba(255,255,255,.42);background:rgba(255,255,255,.02);transition:all .14s;font-family:var(--fb)}
+.schip:hover{border-color:rgba(26,79,214,.4);color:#93C5FD;background:rgba(26,79,214,.07)}
+
+/* Loading */
+.loading-bar{display:none;align-items:center;gap:10px;padding:16px 0}
+.ldots{display:flex;gap:4px}
+.ldot{width:4px;height:4px;border-radius:50%;background:var(--blue);animation:pulse 1.3s infinite}
+.ldot:nth-child(2){animation-delay:.15s}.ldot:nth-child(3){animation-delay:.3s}
+.ltext{font-size:12px;color:rgba(255,255,255,.3);font-family:var(--fm)}
+
+/* Resultados */
+.results-wrap{display:flex;flex-direction:column;gap:0}
+
+/* Síntese */
+.synthesis{padding:18px 0 14px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:16px;animation:fadeUp .25s ease}
+.syn-label{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(29,158,117,.8);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.syn-label svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.syn-text{font-size:14px;line-height:1.8;color:rgba(255,255,255,.8)}
+.rag-tag{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:10px;color:rgba(255,255,255,.25);font-family:var(--fm)}
+.rag-tag svg{width:10px;height:10px;fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round}
+
+/* Result cards */
+.rcard{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeUp .2s ease both}
+.rcard:last-child{border-bottom:none}
+.rcard-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:6px}
+.rcard-left{display:flex;align-items:flex-start;gap:10px;flex:1}
+.source-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;margin-top:5px}
+.dot-NR{background:#3B82F6}
+.dot-ABNT{background:#10B981}
+.dot-LEI{background:#F59E0B}
+.dot-ARTIGO{background:#8B5CF6}
+.rtitle{font-size:14px;font-weight:600;color:var(--white);line-height:1.45;font-family:var(--fh)}
+.rcard-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.rbadge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px;white-space:nowrap}
+.rbadge-NR{color:#93C5FD;background:rgba(59,130,246,.12)}
+.rbadge-ABNT{color:#6EE7B7;background:rgba(16,185,129,.1)}
+.rbadge-LEI{color:#FCD34D;background:rgba(245,158,11,.1)}
+.rbadge-ARTIGO{color:#C4B5FD;background:rgba(139,92,246,.1)}
+.copy-btn{width:26px;height:26px;border:1px solid rgba(255,255,255,.07);border-radius:6px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.copy-btn:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)}
+.copy-btn svg{width:12px;height:12px;fill:none;stroke:rgba(255,255,255,.4);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.copy-btn.copied{border-color:rgba(29,158,117,.4);background:rgba(29,158,117,.08)}
+.copy-btn.copied svg{stroke:var(--teal)}
+.trecho-block{font-family:var(--fm);font-size:12px;color:rgba(255,255,255,.55);line-height:1.7;padding:10px 14px;background:rgba(255,255,255,.025);border-radius:8px;margin:8px 0;border-left:2px solid rgba(255,255,255,.1)}
+.rsum{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin:6px 0 8px}
+.rref-row{display:flex;align-items:center;gap:8px}
+.rref{font-family:var(--fm);font-size:10px;color:rgba(255,255,255,.28)}
+
+/* Estado vazio */
+.empty-state{text-align:center;padding:60px 0;color:rgba(255,255,255,.18)}
+.empty-state p{font-size:13px;line-height:1.8}
+
+/* Resultado count */
+.result-count{font-size:11px;color:rgba(255,255,255,.22);margin-bottom:4px;font-family:var(--fm)}
+
+/* Mobile */
+@media(max-width:480px){
+  .hero{padding:32px 0 24px}
+  .hero h1{font-size:24px}
+  .filter-row{gap:5px}
+  .ftag{font-size:10px;padding:3px 8px}
+  .search-input{font-size:14px;padding:13px 48px 13px 16px}
+}
+
+/* ═══ PITCH PAGE ═════════════════════════════════════════════════════ */
+.pp{max-width:940px;margin:0 auto;padding:36px 24px 80px}
+.pnav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.pb{font-family:var(--fb);font-size:11px;font-weight:500;padding:4px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:transparent;color:rgba(255,255,255,.38);cursor:pointer;transition:all .15s;white-space:nowrap}
+.pb:hover{color:var(--white);border-color:rgba(255,255,255,.22)}
+.pb.active{background:var(--blue);border-color:var(--blue);color:var(--white)}
+.ps{display:none;animation:fadeUp .3s ease}.ps.active{display:block}
+
+/* Cover */
+.cover{background:linear-gradient(135deg,#0D1F3C 0%,#080D18 60%);border:1px solid rgba(255,255,255,.06);border-radius:var(--rl);padding:44px 38px;margin-bottom:20px;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-80px;left:-80px;width:300px;height:300px;background:rgba(26,79,214,.1);border-radius:50%;pointer-events:none}
+.cover::after{content:'';position:absolute;bottom:-60px;right:-50px;width:220px;height:220px;background:rgba(29,158,117,.07);border-radius:50%;pointer-events:none}
+.ctag{display:inline-flex;align-items:center;gap:6px;background:rgba(26,79,214,.14);border:1px solid rgba(26,79,214,.28);padding:3px 11px;border-radius:20px;font-size:10px;font-weight:700;color:#60A5FA;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px}
+.cover h1{font-family:var(--fh);font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:8px}
+.cover h1 em{color:#60A5FA;font-style:normal}
+.csub{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:26px;line-height:1.65}
+.fbadge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);padding:7px 14px;border-radius:28px}
+.fav{width:26px;height:26px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--dark)}
+.fn{font-size:12px;font-weight:600;color:var(--white)}
+.fr{font-size:10px;color:rgba(255,255,255,.38)}
+.cstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.cs{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:13px 14px}
+.csv{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--amber);margin-bottom:2px}
+.csl{font-size:10px;color:rgba(255,255,255,.38)}
+
+/* Section titles */
+.st{font-family:var(--fh);font-size:21px;font-weight:700;letter-spacing:-.5px;margin-bottom:5px}
+.ss{font-size:13px;color:rgba(255,255,255,.42);margin-bottom:22px;line-height:1.6}
+
+/* Grid */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+
+/* P-card */
+.pc{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:18px}
+.pc.ab{border-color:rgba(26,79,214,.35);background:rgba(26,79,214,.05)}
+.pc.at{border-color:rgba(29,158,117,.35);background:rgba(29,158,117,.05)}
+.pc.aa{border-color:rgba(239,159,39,.35);background:rgba(239,159,39,.05)}
+.pc.ar{border-color:rgba(226,75,74,.25);background:rgba(226,75,74,.04)}
+.pc.fp{border-color:var(--teal);border-width:1.5px;background:rgba(29,158,117,.07)}
+.pci{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:15px}
+.pct{font-family:var(--fh);font-size:13.5px;font-weight:700;margin-bottom:5px}
+.pcd{font-size:12px;color:rgba(255,255,255,.48);line-height:1.65}
+
+/* Problem rows */
+.prow{display:flex;gap:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:13px 15px;margin-bottom:9px;border-left:3px solid var(--red)}
+.pi{width:30px;height:30px;background:rgba(226,75,74,.12);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.pt{font-size:12.5px;font-weight:700;margin-bottom:2px}
+.pd{font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.55}
+
+/* Plans */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:20px}
+.pln{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:var(--rl);overflow:hidden}
+.pln.fp2{border-color:var(--blue);border-width:1.5px}
+.plnh{padding:14px 16px 11px;border-bottom:1px solid rgba(255,255,255,.06)}
+.plnh.fh{background:rgba(255,255,255,.02)}
+.plnh.ph{background:rgba(26,79,214,.1)}
+.plnh.eh{background:rgba(239,159,39,.07)}
+.plnpop{font-size:8px;font-weight:700;background:var(--blue);color:white;padding:2px 7px;border-radius:8px;letter-spacing:.5px;display:inline-block;margin-bottom:7px}
+.plnn{font-family:var(--fh);font-size:15px;font-weight:700;margin-bottom:2px}
+.plntag{font-size:10px;color:rgba(255,255,255,.38);margin-bottom:8px}
+.plnp{font-family:var(--fh);font-size:24px;font-weight:800}
+.plnp span{font-size:11px;font-weight:400;color:rgba(255,255,255,.38)}
+.plnb{padding:13px 16px}
+.plnf{font-size:11.5px;color:rgba(255,255,255,.55);padding:3px 0;display:flex;align-items:center;gap:7px}
+.plnf::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+/* Diff table */
+.dt{width:100%;border-collapse:collapse;margin-bottom:20px}
+.dt th{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+.dt td{font-size:12px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.65);vertical-align:top}
+.dt tr:last-child td{border-bottom:none}
+.dt td:first-child{font-weight:600;color:var(--white);width:26%}
+.dt .bad{color:#F87171}.dt .good{color:#34D399}
+.dt .hr td{background:rgba(26,79,214,.05)}
+
+/* Sim table */
+.simt{width:100%;border-collapse:collapse;margin-bottom:14px}
+.simt th{font-size:10px;font-weight:700;color:var(--white);padding:9px 12px;background:var(--navy);text-align:left}
+.simt th:not(:first-child){text-align:center}
+.simt td{font-size:12px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.simt td:not(:first-child){text-align:center}
+.simt tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.simt tr:last-child td{background:rgba(239,159,39,.05);font-weight:600;color:var(--amber)}
+.sg{color:#34D399;font-weight:600}
+
+/* Roadmap */
+.rm{position:relative;padding-left:26px}
+.rmi{position:relative;margin-bottom:18px;padding-left:8px}
+.rmi::before{content:'';position:absolute;left:-18px;top:7px;width:1px;height:calc(100% + 12px);background:rgba(255,255,255,.07)}
+.rmi:last-child::before{display:none}
+.rmd{position:absolute;left:-24px;top:2px;width:13px;height:13px;border-radius:50%;border:2px solid rgba(255,255,255,.12);background:var(--dark);display:flex;align-items:center;justify-content:center}
+.rmd.dn{background:var(--teal);border-color:var(--teal)}
+.rmd.dn::after{content:'✓';font-size:6px;color:white;font-weight:700}
+.rmt{font-size:12.5px;font-weight:700;margin-bottom:2px}
+.rmt.pd{color:rgba(255,255,255,.38)}
+.rmd2{font-size:11.5px;color:rgba(255,255,255,.33);line-height:1.5}
+.rtag{display:inline-block;font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;margin-left:7px;vertical-align:middle}
+.rtag.next{background:rgba(26,79,214,.18);color:#93C5FD}
+.rtag.dt2{background:rgba(29,158,117,.18);color:#6EE7B7}
+
+/* Proj table */
+.pjt{width:100%;border-collapse:collapse;margin-bottom:18px}
+.pjt th{font-size:10px;font-weight:700;color:var(--white);padding:9px 12px;background:var(--navy)}
+.pjt th:not(:first-child){text-align:center}
+.pjt td{font-size:12px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.pjt td:not(:first-child){text-align:center}
+.pjt tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.pjt .hp td{background:rgba(26,79,214,.07);color:#93C5FD;font-weight:700}
+
+/* Growth */
+.gh{background:rgba(29,158,117,.05);border:1.5px solid rgba(29,158,117,.28);border-radius:var(--rl);padding:22px;margin-bottom:14px}
+.gbadge{display:inline-flex;align-items:center;gap:5px;background:rgba(29,158,117,.18);border:1px solid rgba(29,158,117,.35);padding:3px 11px;border-radius:20px;font-size:9.5px;font-weight:700;color:#34D399;letter-spacing:.5px;margin-bottom:12px}
+.gtitle{font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:5px}
+.gdesc{font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.65}
+.gmets{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.gm{background:rgba(255,255,255,.035);border-radius:var(--r);padding:11px}
+.gmv{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--teal);margin-bottom:2px}
+.gml{font-size:10px;color:rgba(255,255,255,.38)}
+
+/* Alert cards */
+.ac{background:rgba(239,159,39,.04);border:1px solid rgba(239,159,39,.18);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.ac.res{background:rgba(29,158,117,.04);border-color:rgba(29,158,117,.18)}
+.an{font-size:9.5px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.an.res{color:var(--teal)}
+.at2{font-size:12.5px;font-weight:700;margin-bottom:5px}
+.ab2{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65}
+.aa2{margin-top:9px;padding-top:9px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;color:#6EE7B7;line-height:1.65}
+
+/* Utilities */
+.mt{margin-top:16px}.mt2{margin-top:22px}.mb{margin-bottom:14px}.mb2{margin-bottom:20px}
+.notice{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:11px 14px;font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.6}
+.notice strong{color:rgba(255,255,255,.65)}
+
+@media(max-width:600px){
+  .g2,.g3,.pgrid,.cstats,.gmets{grid-template-columns:1fr}
+  .cover h1{font-size:28px}
+  .ntab span{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <a class="brand" href="#">
+      <div class="bi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <span class="bn">Safe<em>Core</em> AI</span>
+    </a>
+    <div class="ntabs">
+      <button class="ntab active" onclick="showPage('search',this)"><span>Busca</span><span class="nbadge">IA</span></button>
+      <button class="ntab" onclick="showPage('pitch',this)"><span>Apresentação</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ SEARCH PAGE ════════════════════════════════════════════════════════ -->
+<div id="page-search" class="page active">
+<div class="sp">
+
+  <!-- Hero — colapsa após busca -->
+  <div class="hero" id="hero">
+    <div class="hero-eyebrow"><i></i>Base normativa oficial · RAG</div>
+    <h1>Busca em <b>Segurança<br>do Trabalho</b></h1>
+    <p class="hero-sub">Respostas com citação exata de NRs, CLT e legislação.<br>Não probabilidade — documento real.</p>
+  </div>
+
+  <!-- Campo de busca -->
+  <div class="search-wrap">
+    <textarea
+      class="search-input"
+      id="query"
+      rows="1"
+      placeholder="Digite sua pergunta sobre SST..."
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();doSearch();}"
+      oninput="autoGrow(this)"
+    ></textarea>
+    <button class="search-submit" id="sbtn" onclick="doSearch()" title="Pesquisar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+    </button>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filter-row">
+    <span class="filter-label">Fontes</span>
+    <button class="ftag on" onclick="toggleFilter(this,'NR')">NR</button>
+    <button class="ftag on" onclick="toggleFilter(this,'ABNT')">ABNT</button>
+    <button class="ftag on" onclick="toggleFilter(this,'LEI')">Legislação</button>
+    <button class="ftag on" onclick="toggleFilter(this,'ARTIGO')">Artigos</button>
+  </div>
+
+  <!-- Histórico de sessão -->
+  <div class="history-section" id="history-section" style="display:none">
+    <div class="history-label">
+      <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Recentes
+    </div>
+    <div class="history-chips" id="history-chips"></div>
+  </div>
+
+  <!-- Sugestões (estado inicial) -->
+  <div class="suggestions" id="suggestions">
+    <div class="sug-label">Experimente</div>
+    <div class="sug-chips">
+      <span class="schip" onclick="setQ(this.innerText)">EPI para solda elétrica</span>
+      <span class="schip" onclick="setQ(this.innerText)">NR-10 eletricistas</span>
+      <span class="schip" onclick="setQ(this.innerText)">Trabalho em altura NR-35</span>
+      <span class="schip" onclick="setQ(this.innerText)">CIPA composição</span>
+      <span class="schip" onclick="setQ(this.innerText)">Espaço confinado NR-33</span>
+      <span class="schip" onclick="setQ(this.innerText)">PCMSO periodicidade</span>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-bar" id="ld">
+    <div class="ldots">
+      <div class="ldot"></div><div class="ldot"></div><div class="ldot"></div>
+    </div>
+    <span class="ltext">Consultando base normativa...</span>
+  </div>
+
+  <!-- Resultados -->
+  <div class="results-wrap" id="results">
+    <div class="empty-state">
+      <p>Digite uma pergunta para começar.<br>As respostas citam o item e o trecho exato da norma.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ PITCH PAGE ═════════════════════════════════════════════════════════ -->
+<div id="page-pitch" class="page">
+<div class="pp">
+  <div class="pnav">
+    <button class="pb active" onclick="showS('cover',this)">Capa</button>
+    <button class="pb" onclick="showS('problem',this)">Problema</button>
+    <button class="pb" onclick="showS('solution',this)">Solução</button>
+    <button class="pb" onclick="showS('diferencial',this)">Diferencial</button>
+    <button class="pb" onclick="showS('modelo',this)">Modelo</button>
+    <button class="pb" onclick="showS('simulador',this)">Simulador</button>
+    <button class="pb" onclick="showS('mercado',this)">Mercado</button>
+    <button class="pb" onclick="showS('roadmap',this)">Roadmap</button>
+    <button class="pb" onclick="showS('projecoes',this)">Projeções</button>
+    <button class="pb" onclick="showS('crescimento',this)">Crescimento</button>
+    <button class="pb" onclick="showS('investidor',this)">Investidor</button>
+  </div>
+
+  <!-- CAPA -->
+  <div id="s-cover" class="ps active">
+    <div class="cover">
+      <div class="ctag">Pitch Deck · Seed Round · Marco 2026</div>
+      <h1>Safe<em>Core</em> AI</h1>
+      <p class="csub">Plataforma de busca inteligente em normas, legislação<br>e artigos de Segurança do Trabalho — powered by IA.</p>
+      <div class="fbadge">
+        <div class="fav">AO</div>
+        <div><div class="fn">Alisson de Oliveira</div><div class="fr">Fundador & CEO</div></div>
+      </div>
+      <div class="cstats">
+        <div class="cs"><div class="csv">38 NRs</div><div class="csl">indexadas — todas públicas</div></div>
+        <div class="cs"><div class="csv">R$ 2,1 bi</div><div class="csl">mercado SST Brasil</div></div>
+        <div class="cs"><div class="csv">+3 mi</div><div class="csl">profissionais de SST</div></div>
+      </div>
+    </div>
+    <div class="notice">Confidencial — não distribuir sem autorização do fundador.</div>
+  </div>
+
+  <!-- PROBLEMA -->
+  <div id="s-problem" class="ps">
+    <div class="st">O Problema</div>
+    <div class="ss">Não é produtividade. É segurança jurídica para quem trabalha com segurança.</div>
+
+    <!-- Frase impacto -->
+    <div style="border-left:3px solid var(--red);padding:12px 16px;margin-bottom:20px;background:rgba(226,75,74,.04);border-radius:0 var(--r) var(--r) 0">
+      <div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.75;font-style:italic">"Trabalho com normas que mudam sem aviso, assino documentos com responsabilidade pessoal, e qualquer erro pode me custar o registro profissional, uma multa ou um processo criminal."</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:6px">— A dor real de todo profissional de SST no Brasil</div>
+    </div>
+
+    <!-- 4 personas -->
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:20px">
+
+      <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(226,75,74,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🏭</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white)">Empresa</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35)">CNPJ · Gestores · RH</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px">Autuada pelo fiscal do MTE sem saber que a norma havia mudado. A multa vai de <strong style="color:#F87171">R$2.000 a R$400.000</strong> por infração — mesmo sem intenção de descumprir.</div>
+        <div style="font-size:10px;font-weight:600;color:#F87171;background:rgba(226,75,74,.1);padding:4px 10px;border-radius:6px;display:inline-block">Risco: autuação e interdição</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(26,79,214,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🦺</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white)">Técnico de Segurança</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35)">TST · CIPA · Consultor SST</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px">Assina laudos com o <strong style="color:#93C5FD">CPF</strong>. Se um acidente acontece e o laudo cita norma errada ou desatualizada, responde <strong style="color:#93C5FD">criminalmente</strong> — não só a empresa. Atende dezenas de clientes ao mesmo tempo.</div>
+        <div style="font-size:10px;font-weight:600;color:#93C5FD;background:rgba(26,79,214,.12);padding:4px 10px;border-radius:6px;display:inline-block">Risco: processo criminal e cassação</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(29,158,117,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🩺</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white)">Médico do Trabalho</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35)">PCMSO · Perícias · Laudos</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px">O PCMSO precisa estar alinhado às NRs e legislação vigente. Uma revisão do MTE pode invalidar <strong style="color:#6EE7B7">anos de laudos</strong> se o médico não acompanhou as atualizações — e hoje isso é feito lendo PDF por PDF, manualmente.</div>
+        <div style="font-size:10px;font-weight:600;color:#6EE7B7;background:rgba(29,158,117,.1);padding:4px 10px;border-radius:6px;display:inline-block">Risco: invalidação de laudos e CRM</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(239,159,39,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚙️</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white)">Engenheiro de Segurança</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35)">Projetos · ABNT · NRs técnicas</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px">Projeta instalações e sistemas com base em normas ABNT e NRs. Uma norma revisada pode tornar um projeto aprovado em <strong style="color:#FCD34D">não-conforme da noite para o dia</strong> — sem nenhum alerta, sem nenhum aviso.</div>
+        <div style="font-size:10px;font-weight:600;color:#FCD34D;background:rgba(239,159,39,.1);padding:4px 10px;border-radius:6px;display:inline-block">Risco: projeto não-conforme e CREA</div>
+      </div>
+
+    </div>
+
+    <!-- Oceano Azul -->
+    <div style="background:rgba(26,79,214,.07);border:1px solid rgba(26,79,214,.25);border-radius:var(--rl);padding:16px 18px;margin-bottom:12px">
+      <div style="font-size:10px;font-weight:700;color:#93C5FD;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px">Oceano azul — primeira vez no Brasil</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">O que existe hoje</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.7">
+            Portal MTE — PDFs estáticos, zero IA<br>
+            ABNT Coleções — busca por palavra, sem síntese<br>
+            eSocial / TOTVS — registro operacional, não consulta<br>
+            ChatGPT / Gemini — alucina normas, sem rastreabilidade
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#93C5FD;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">O que o SafeCore AI entrega</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.7">
+            Base normativa oficial atualizada automaticamente<br>
+            Busca semântica por intenção, não palavras-chave<br>
+            Citação exata de item, trecho e data de vigência<br>
+            Rastreabilidade para auditoria e defesa jurídica
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frase final -->
+    <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:12px 16px;text-align:center">
+      <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7">SafeCore AI não compete com nenhum produto existente no Brasil —</div>
+      <div style="font-size:14px;font-weight:600;color:var(--white);margin-top:2px">porque esse produto ainda não existe. <span style="color:#60A5FA">Estamos criando uma categoria nova.</span></div>
+    </div>
+
+  </div>
+
+  <!-- SOLUCAO -->
+  <div id="s-solution" class="ps">
+    <div class="st">A Solução</div>
+    <div class="ss">SafeCore AI — o Consensus.app da Segurança do Trabalho. Busca semântica + síntese com citação normativa precisa.</div>
+    <div class="g2 mb2">
+      <div class="pc ab"><div class="pci" style="background:rgba(26,79,214,.18);color:#60A5FA">🔎</div><div class="pct">Busca Semântica</div><div class="pcd">Entende a intenção, não só palavras-chave. Retorna o trecho exato da norma com citação do item.</div></div>
+      <div class="pc at"><div class="pci" style="background:rgba(29,158,117,.18);color:#34D399">📋</div><div class="pct">Síntese com Fontes</div><div class="pcd">Resposta direta + citação da NR, ABNT ou lei. Rastreabilidade total para auditorias e fiscalizações.</div></div>
+      <div class="pc aa"><div class="pci" style="background:rgba(239,159,39,.18);color:#FCD34D">⚡</div><div class="pct">Base Atualizada</div><div class="pcd">NRs + CLT indexadas. Pipeline de atualização monitorado via MTE e D.O.U. automaticamente.</div></div>
+      <div class="pc"><div class="pci" style="background:rgba(83,75,183,.18);color:#C4B5FD">💾</div><div class="pct">Histórico Salvo</div><div class="pcd">Buscas salvas por usuário no Supabase. Contexto profissional preservado entre sessões.</div></div>
+    </div>
+    <div class="pc at">
+      <div class="pct">Como funciona — RAG (Retrieval Augmented Generation)</div>
+      <div class="pcd" style="margin-top:7px">1. Usuário faz a pergunta → 2. Sistema busca dentro da base normativa real (pgvector) → 3. Retorna o trecho oficial → 4. IA explica com a fonte citada.<br><br>A resposta vem do documento real — não de probabilidade linguística. Isso elimina alucinações normativas e garante rastreabilidade para auditorias.</div>
+    </div>
+  </div>
+
+  <!-- DIFERENCIAL -->
+  <div id="s-diferencial" class="ps">
+    <div class="st">Por que não ChatGPT ou Gemini?</div>
+    <div class="ss">IAs generalistas conseguem citar normas — mas existe uma diferença estrutural crítica para SST.</div>
+    <table class="dt mb2">
+      <thead><tr><th>Critério</th><th>ChatGPT / Gemini</th><th>SafeCore AI</th></tr></thead>
+      <tbody>
+        <tr><td>Base de conhecimento</td><td class="bad">Treinamento geral — pode estar desatualizado</td><td class="good">NRs + CLT indexadas e atualizadas continuamente</td></tr>
+        <tr class="hr"><td>Alucinação normativa</td><td class="bad">Inventa itens, mistura normas, cita versão errada</td><td class="good">Resposta vem do documento real via RAG</td></tr>
+        <tr><td>Citação de fonte</td><td class="bad">Resposta genérica sem item/alínea específica</td><td class="good">Cita NR, item e trecho literal da norma</td></tr>
+        <tr class="hr"><td>Rastreabilidade</td><td class="bad">Impossível auditar — sem referência oficial</td><td class="good">Auditores veem item exato e texto literal</td></tr>
+        <tr><td>Versão vigente</td><td class="bad">Usa versão do treinamento — pode ser antiga</td><td class="good">Pipeline de atualização via MTE e D.O.U.</td></tr>
+        <tr class="hr"><td>Segurança jurídica</td><td class="bad">Sem garantia — "consulta informal"</td><td class="good">Consultoria técnica automatizada com fonte</td></tr>
+        <tr><td>Contexto do usuário</td><td class="bad">Sem memória de setor ou empresa</td><td class="good">Perfil salvo — sabe setor e porte da empresa</td></tr>
+      </tbody>
+    </table>
+    <div class="g2">
+      <div class="pc ar"><div class="pct">O risco das IAs gerais em SST</div><div class="pcd">Uma IA geral pode inventar um item de NR que não existe, usar redação já revogada, ou misturar normas. Multa por infração pode chegar a R$ 12.000 — e a responsabilidade é do profissional, não da IA.</div></div>
+      <div class="pc at"><div class="pct">A analogia que fecha o argumento</div><div class="pcd">ChatGPT é um médico clínico geral. SafeCore AI é o cardiologista. O especialista cobra mais, é mais confiável — e o paciente não troca quando o assunto é sério. Em SST, o assunto é sempre sério.</div></div>
+    </div>
+  </div>
+
+  <!-- MODELO -->
+  <div id="s-modelo" class="ps">
+    <div class="st">Modelo de Negócio</div>
+    <div class="ss">Créditos mensais por uso — entrada fácil, upsell natural, sem migração forçada de plano.</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:20px">
+
+      <!-- FREE -->
+      <div class="pln">
+        <div class="plnh fh">
+          <div class="plnn">Free</div>
+          <div class="plntag">Comece grátis</div>
+          <div class="plnp">R$ 0 <span>/ sempre</span></div>
+        </div>
+        <div class="plnb">
+          <div class="plnf">50 buscas / mês</div>
+          <div class="plnf">NRs principais</div>
+          <div class="plnf">Respostas sintetizadas</div>
+        </div>
+      </div>
+
+      <!-- STARTER -->
+      <div class="pln">
+        <div class="plnh" style="background:rgba(29,158,117,.08)">
+          <div class="plnn">Starter</div>
+          <div class="plntag">Para começar a usar</div>
+          <div class="plnp" style="color:#6EE7B7">R$ 19 <span>/ mês</span></div>
+        </div>
+        <div class="plnb">
+          <div class="plnf">300 buscas / mês</div>
+          <div class="plnf">Todas as fontes</div>
+          <div class="plnf">Histórico salvo</div>
+          <div class="plnf">Suporte por email</div>
+        </div>
+      </div>
+
+      <!-- PRO -->
+      <div class="pln fp2">
+        <div class="plnh ph">
+          <div class="plnpop">POPULAR</div>
+          <div class="plnn">Pro</div>
+          <div class="plntag">Para uso intenso</div>
+          <div class="plnp">R$ 49 <span>/ mês</span></div>
+        </div>
+        <div class="plnb">
+          <div class="plnf">1.000 buscas / mês</div>
+          <div class="plnf">Tudo do Starter</div>
+          <div class="plnf">Gerador de documentos</div>
+          <div class="plnf">Alertas de atualização NR</div>
+          <div class="plnf">Suporte prioritário</div>
+        </div>
+      </div>
+
+      <!-- EMPRESA -->
+      <div class="pln" style="border-color:rgba(239,159,39,.35)">
+        <div class="plnh eh" style="background:rgba(239,159,39,.1)">
+          <div class="plnn" style="color:var(--amber)">Empresa</div>
+          <div class="plntag">API · White-label</div>
+          <div class="plnp" style="color:var(--amber);font-size:16px">A negociar</div>
+        </div>
+        <div class="plnb">
+          <div class="plnf">Buscas ilimitadas</div>
+          <div class="plnf">Multi-usuários</div>
+          <div class="plnf">Acesso via API</div>
+          <div class="plnf">White-label com sua marca</div>
+          <div class="plnf">Contrato + nota fiscal CNPJ</div>
+          <div class="plnf">SLA e suporte dedicado</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Escada de upsell visual -->
+    <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:14px 18px;margin-bottom:14px">
+      <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Jornada natural do usuário</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div style="text-align:center;padding:7px 12px;background:rgba(255,255,255,.04);border-radius:8px">
+          <div style="font-size:10px;color:rgba(255,255,255,.35);margin-bottom:2px">Experimenta</div>
+          <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">Free</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.25)">50 buscas</div>
+        </div>
+        <div style="color:rgba(255,255,255,.2);font-size:16px">→</div>
+        <div style="text-align:center;padding:7px 12px;background:rgba(29,158,117,.08);border-radius:8px">
+          <div style="font-size:10px;color:rgba(29,158,117,.7);margin-bottom:2px">Adota</div>
+          <div style="font-size:13px;font-weight:600;color:#6EE7B7">Starter</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.25)">R$ 19</div>
+        </div>
+        <div style="color:rgba(255,255,255,.2);font-size:16px">→</div>
+        <div style="text-align:center;padding:7px 12px;background:rgba(26,79,214,.12);border-radius:8px;border:1px solid rgba(26,79,214,.3)">
+          <div style="font-size:10px;color:#93C5FD;margin-bottom:2px">Depende</div>
+          <div style="font-size:13px;font-weight:600;color:#93C5FD">Pro</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.25)">R$ 49</div>
+        </div>
+        <div style="color:rgba(255,255,255,.2);font-size:16px">→</div>
+        <div style="text-align:center;padding:7px 12px;background:rgba(239,159,39,.08);border-radius:8px">
+          <div style="font-size:10px;color:rgba(239,159,39,.7);margin-bottom:2px">Escala</div>
+          <div style="font-size:13px;font-weight:600;color:var(--amber)">Empresa</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.25)">Negociado</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:10px;line-height:1.6">Cada salto é motivado pelo uso, não por uma barreira artificial. O usuário avança quando sente que precisa de mais — não quando você força a troca de plano.</div>
+    </div>
+
+    <!-- Unit economics -->
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+      <div class="pc"><div class="pct" style="color:#34D399">Ticket médio inicial</div><div style="font-family:var(--fh);font-size:22px;font-weight:700;margin-top:4px">R$ 19</div><div class="pcd">entrada no Starter</div></div>
+      <div class="pc"><div class="pct" style="color:#34D399">Ticket alvo Pro</div><div style="font-family:var(--fh);font-size:22px;font-weight:700;margin-top:4px">R$ 49</div><div class="pcd">após validação NPS</div></div>
+      <div class="pc"><div class="pct" style="color:#34D399">Margem bruta</div><div style="font-family:var(--fh);font-size:22px;font-weight:700;margin-top:4px">~96%</div><div class="pcd">em todos os planos</div></div>
+    </div>
+
+  </div>
+
+  <!-- SIMULADOR -->
+  <div id="s-simulador" class="ps">
+    <div class="st">Simulador de Custo</div>
+    <div class="ss">Mova os controles e veja o impacto em tempo real — receita, custo de API e margem calculados automaticamente.</div>
+
+    <!-- Plano selector -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-size:11px;color:rgba(255,255,255,.3);align-self:center;margin-right:4px">Plano:</span>
+      <button class="ftag on" id="sp-starter" onclick="setPlano('starter',this)">Starter — R$19</button>
+      <button class="ftag" id="sp-pro"     onclick="setPlano('pro',this)">Pro — R$49</button>
+      <button class="ftag" id="sp-mix"     onclick="setPlano('mix',this)">Mix (50/50)</button>
+    </div>
+
+    <!-- Sliders -->
+    <div style="background:rgba(255,255,255,.025);border:0.5px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:18px 20px;margin-bottom:14px">
+
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <label style="font-size:13px;color:rgba(255,255,255,.55);width:190px;flex-shrink:0">Usuários ativos/mês</label>
+        <input type="range" id="sl-users" min="10" max="2000" step="10" value="100" oninput="calc()" style="flex:1">
+        <span id="lbl-users" style="font-size:14px;font-weight:500;color:var(--white);min-width:48px;text-align:right">100</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <label style="font-size:13px;color:rgba(255,255,255,.55);width:190px;flex-shrink:0">Buscas por usuário/mês</label>
+        <input type="range" id="sl-searches" min="5" max="200" step="5" value="30" oninput="calc()" style="flex:1">
+        <span id="lbl-searches" style="font-size:14px;font-weight:500;color:var(--white);min-width:48px;text-align:right">30</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px">
+        <label style="font-size:13px;color:rgba(255,255,255,.55);width:190px;flex-shrink:0">Ticket médio (R$)</label>
+        <input type="range" id="sl-ticket" min="0" max="99" step="1" value="19" oninput="calc()" style="flex:1">
+        <span id="lbl-ticket" style="font-size:14px;font-weight:500;color:var(--white);min-width:48px;text-align:right">R$19</span>
+      </div>
+
+    </div>
+
+    <!-- Métricas resultado -->
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:rgba(255,255,255,.03);border-radius:var(--rl);padding:14px 16px">
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px">Buscas totais/mês</div>
+        <div id="res-buscas" style="font-family:var(--fh);font-size:24px;font-weight:700;color:var(--white)">3.000</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.22);margin-top:3px">chamadas de API</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border-radius:var(--rl);padding:14px 16px">
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px">Custo de API</div>
+        <div id="res-custo" style="font-family:var(--fh);font-size:24px;font-weight:700;color:#F87171">~R$51</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.22);margin-top:3px">~R$0,017 por busca</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border-radius:var(--rl);padding:14px 16px">
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px">Receita bruta</div>
+        <div id="res-receita" style="font-family:var(--fh);font-size:24px;font-weight:700;color:#34D399">R$1.900</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.22);margin-top:3px">assinaturas</div>
+      </div>
+    </div>
+
+    <!-- Margem destaque -->
+    <div id="res-margem-card" style="background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.25);border-radius:var(--rl);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="font-size:11px;color:rgba(29,158,117,.7);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:500">Margem estimada</div>
+        <div id="res-margem" style="font-family:var(--fh);font-size:26px;font-weight:700;color:#34D399">R$1.849 / mês</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:4px">Percentual</div>
+        <div id="res-pct" style="font-family:var(--fh);font-size:26px;font-weight:700;color:#34D399">97%</div>
+      </div>
+    </div>
+
+    <!-- Nota premissas -->
+    <div class="notice mt" style="margin-top:12px">
+      <strong>Premissas:</strong> Custo por busca ~R$0,017 · Cotação USD/BRL R$5,70 · claude-sonnet (~1.500 tokens entrada + 600 saída) · Margem não inclui CAC, Supabase Pro ($25/mês acima de 500 usuários) nem time.
+    </div>
+
+  </div>
+
+  <!-- MERCADO -->
+  <div id="s-mercado" class="ps">
+    <div class="st">Mercado Endereçável</div>
+    <div class="ss">Setor regulado por lei, obrigatório em todas as empresas, com atualização constante.</div>
+    <div class="g3 mb2">
+      <div class="pc aa"><div class="pct">TAM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:var(--amber);margin:7px 0">R$ 2,1 bi/ano</div><div class="pcd">Mercado total SST Brasil — treinamentos, consultorias, softwares, EPIs.</div></div>
+      <div class="pc" style="border-color:rgba(239,159,39,.22)"><div class="pct">SAM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:#FCD34D;margin:7px 0">R$ 420 mi/ano</div><div class="pcd">Profissionais de SST e consultorias com gestão normativa.</div></div>
+      <div class="pc"><div class="pct">SOM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:#F59E0B;margin:7px 0">R$ 42 mi/ano</div><div class="pcd">Técnicos e consultores — alvo inicial antes da expansão B2B.</div></div>
+    </div>
+    <div class="pc mb"><div class="pct">Concorrentes — quem são e como nos diferenciamos</div><div class="pcd" style="margin-top:8px"><strong style="color:white">ChatGPT / Gemini (indiretos):</strong> IAs gerais sem base normativa oficial, sem rastreabilidade, com risco de alucinação normativa.<br><br><strong style="color:white">Portais MTE / ABNT Coleções:</strong> Repositórios estáticos — sem busca semântica, sem síntese, sem citação automática.<br><br><strong style="color:white">Sistemas de gestão SST (eSocial, TOTVS RH):</strong> Focados em registro operacional — não em consulta e interpretação normativa.<br><br><strong style="color:white">Diferencial SafeCore:</strong> Único produto que combina base normativa oficial + RAG + citação exata + rastreabilidade para auditoria.</div></div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div id="s-roadmap" class="ps">
+    <div class="st">Tração & Roadmap</div>
+    <div class="ss">O que já foi construído e os próximos marcos.</div>
+    <div class="rm">
+      <div class="rmi"><div class="rmd dn"></div><div class="rmt">Protótipo funcional <span class="rtag dt2">FEITO</span></div><div class="rmd2">Interface de busca com Claude API integrada — demo ao vivo. Testado informalmente com 12 técnicos de SST durante desenvolvimento.</div></div>
+      <div class="rmi"><div class="rmd dn"></div><div class="rmt">Arquitetura definida <span class="rtag dt2">FEITO</span></div><div class="rmd2">Stack: Supabase + Vercel + Claude API — zero servidor próprio. Custo de infra inicial: R$ 0.</div></div>
+      <div class="rmi"><div class="rmd dn"></div><div class="rmt">Base de conhecimento mapeada <span class="rtag dt2">FEITO</span></div><div class="rmd2">38 NRs + CLT identificadas. Pipeline de atualização via MTE e D.O.U. documentado.</div></div>
+      <div class="rmi"><div class="rmd dn"></div><div class="rmt">Controle de uso projetado <span class="rtag dt2">FEITO</span></div><div class="rmd2">Rate limiting por plano — Supabase verifica contagem antes de cada chamada de API.</div></div>
+      <div class="rmi"><div class="rmd"></div><div class="rmt pd">Beta fechado — 50 usuários <span class="rtag next">Q2 2026</span></div><div class="rmd2">Convidar técnicos de SST para beta gratuito. Coletar NPS e feedback qualitativo — tração real antes do fechamento da rodada.</div></div>
+      <div class="rmi"><div class="rmd"></div><div class="rmt pd">MVP com autenticação <span class="rtag next">Q2 2026</span></div><div class="rmd2">Login, histórico e planos via Supabase Auth — primeiro produto pagável.</div></div>
+      <div class="rmi"><div class="rmd"></div><div class="rmt pd">Base vetorial indexada <span class="rtag next">Q3 2026</span></div><div class="rmd2">pgvector com todas as NRs em chunks — RAG completo e preciso.</div></div>
+      <div class="rmi"><div class="rmd"></div><div class="rmt pd">100 usuários pagantes <span class="rtag next">Q4 2026</span></div><div class="rmd2">Meta de MRR: R$ 2.900.</div></div>
+      <div class="rmi"><div class="rmd"></div><div class="rmt pd">Expansão B2B — white-label <span class="rtag next">2027</span></div><div class="rmd2">Principal driver de receita — ticket R$ 599-999/conta/mês.</div></div>
+    </div>
+    <div class="pc at mt"><div class="pct">Atualização automática das NRs — resposta técnica</div><div class="pcd" style="margin-top:6px">O pipeline monitora o D.O.U. e portal gov.br, detecta novas publicações, baixa, processa em chunks e re-indexa no pgvector. O usuário vê a data de vigência de cada trecho — e recebe alerta se uma NR que ele usa foi revisada.</div></div>
+  </div>
+
+  <!-- PROJECOES -->
+  <div id="s-projecoes" class="ps">
+    <div class="st">Projeções — Cenário Conservador</div>
+    <div class="ss">3 anos com ticket R$ 29, churn 2%/mês e crescimento orgânico.</div>
+    <table class="pjt">
+      <thead><tr><th style="width:44%"></th><th>Ano 1</th><th>Ano 2</th><th>Ano 3</th></tr></thead>
+      <tbody>
+        <tr><td>Usuários pagantes</td><td>150</td><td>800</td><td>3.000</td></tr>
+        <tr class="hp"><td>MRR (Receita Mensal)</td><td>R$ 4.350</td><td>R$ 23.200</td><td>R$ 87.000</td></tr>
+        <tr class="hp"><td>ARR (Receita Anual)</td><td>R$ 52.200</td><td>R$ 278.400</td><td>R$ 1.044.000</td></tr>
+        <tr><td>Custo API / mês</td><td>~R$ 153</td><td>~R$ 816</td><td>~R$ 3.060</td></tr>
+        <tr><td>Margem bruta estimada</td><td>~96%</td><td>~96%</td><td>~96%</td></tr>
+        <tr><td>CAC estimado</td><td>R$ 60</td><td>R$ 50</td><td>R$ 40</td></tr>
+      </tbody>
+    </table>
+    <div class="pc ab mb"><div class="pct">Premissas revisadas</div><div class="pcd" style="margin-top:6px">• Churn 2%/mês (~21% ao ano) — realista para SaaS especializado com alta dependência normativa<br>• CAC R$ 60 via SEO e comunidades SST — crescimento orgânico validado<br>• Com 2%/mês de churn e CAC R$ 60, atingir 3.000 usuários no Ano 3 requer ~350 novos/mês</div></div>
+    <div class="notice"><strong>Nota sobre churn:</strong> Versão anterior usava 5%/mês (~46%/ano), tornando as projeções inconsistentes com o CAC. Revisado para 2%/mês — os dois números agora fecham matematicamente.</div>
+  </div>
+
+  <!-- CRESCIMENTO -->
+  <div id="s-crescimento" class="ps">
+    <div class="st">Próximas Fronteiras</div>
+    <div class="ss">Três vetores que ampliam receita e solidificam o produto no mercado de SST.</div>
+    <div class="gh">
+      <div class="gbadge">⭐ Ponto Principal</div>
+      <div class="gtitle">White-label para Consultorias de SST</div>
+      <div class="gdesc">Consultorias vendem o SafeCore AI com sua marca. Você habilita a conta — elas trazem os clientes. Um único contrato equivale a dezenas de usuários Pro em receita, sem custo adicional de aquisição.</div>
+      <div class="gmets">
+        <div class="gm"><div class="gmv">R$ 599–999</div><div class="gml">por conta/mês — white-label</div></div>
+        <div class="gm"><div class="gmv">CAC = R$ 0</div><div class="gml">consultoria traz os clientes</div></div>
+        <div class="gm"><div class="gmv">1 → dezenas</div><div class="gml">empresas por consultoria</div></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="pc ab"><div class="pci" style="background:rgba(26,79,214,.18);color:#60A5FA;font-size:17px">📄</div><div class="pct">Gerador de Documentos — PGR / PCMSO</div><div class="pcd">Gera laudos técnicos com base nas normas vigentes. Preenche modelos de PCMSO, PGR e APR automaticamente. Justifica ticket maior — produto com muito mais valor percebido.</div><div style="margin-top:11px;font-size:10px;font-weight:700;color:#93C5FD">+R$ 30–50 / usuário / mês adicional ao Pro</div></div>
+      <div class="pc aa"><div class="pci" style="background:rgba(239,159,39,.18);color:#FCD34D;font-size:17px">🔔</div><div class="pct">Alertas de Atualização de NRs</div><div class="pcd">Monitora publicações do MTE e D.O.U. automaticamente. Envia resumo da mudança ao profissional. Baixo custo técnico — pipeline já previsto na arquitetura. Alta retenção por criar dependência saudável.</div><div style="margin-top:11px;font-size:10px;font-weight:700;color:#FCD34D">Redução de churn estimada em 40%</div></div>
+    </div>
+  </div>
+
+  <!-- INVESTIDOR -->
+  <div id="s-investidor" class="ps">
+    <div class="st">Perguntas Difíceis — Respostas Diretas</div>
+    <div class="ss">6 pontos que qualquer investidor levantará em due diligence — com respostas preparadas.</div>
+
+    <div class="ac"><div class="an">Ponto 1</div><div class="at2">Ausência de tração real com usuários</div><div class="ab2">O roadmap mostra checkmarks em protótipo e arquitetura, mas nenhum número de usuários reais. Para um pitch seed, mesmo 50 usuários em beta com feedback qualitativo seria muito mais convincente do que projeções.</div><div class="aa2">→ Beta fechado planejado para Q2 2026 com técnicos de SST de comunidades mapeadas. O protótipo foi testado informalmente com 12 profissionais durante o desenvolvimento — feedback de uso real e NPS serão coletados sistematicamente antes do fechamento da rodada. Se houver um depoimento de técnico que usou, deve estar no pitch presencial.</div></div>
+
+    <div class="ac res"><div class="an res">Ponto 2 — Resolvido</div><div class="at2">Ticket caiu de R$ 49 para R$ 29 sem explicação</div><div class="ab2">Uma redução de 40% na receita projetada sem justificativa levanta dúvidas sobre convicção na precificação.</div><div class="aa2">→ R$ 29/mês é o preço de lançamento para maximizar conversão e validar retenção antes de subir o ticket. Migração para R$ 49 após 200 usuários pagantes com NPS validado. O modelo de margem suporta os dois cenários — decisão estratégica, não insegurança.</div></div>
+
+    <div class="ac res"><div class="an res">Ponto 3 — Resolvido</div><div class="at2">Churn de 5%/mês é alto demais para as projeções</div><div class="ab2">5%/mês equivale a ~46%/ano. Com esse churn, chegar a 3.000 usuários no Ano 3 com CAC de R$ 60 é matematicamente inconsistente.</div><div class="aa2">→ Churn revisado para 2%/mês (~21%/ano) — realista para SaaS especializado com alta dependência normativa e baixa alternativa direta. Com esse número, o modelo fecha: 350 novos usuários/mês no Ano 3 com CAC de R$ 40-60 é atingível via SEO + comunidades SST.</div></div>
+
+    <div class="ac res"><div class="an res">Ponto 4 — Resolvido</div><div class="at2">Como o SafeCore detecta e re-indexa quando o MTE atualiza uma NR?</div><div class="ab2">O problema #3 do pitch é "atualizações constantes" — mas o deck não explicava como isso é resolvido tecnicamente.</div><div class="aa2">→ Pipeline monitora D.O.U. e portal gov.br, detecta novas publicações, baixa, processa em chunks e re-indexa no pgvector. Usuários que utilizam a NR atualizada recebem alerta automático. A data de vigência de cada trecho é exibida na resposta.</div></div>
+
+    <div class="ac"><div class="an">Ponto 5</div><div class="at2">Concorrência superficial — quem são especificamente?</div><div class="ab2">"Menos de 5 concorrentes diretos" não convence. O investidor vai perguntar quem são e qual o diferencial de cada comparação.</div><div class="aa2">→ Respondido na aba Mercado: ChatGPT/Gemini (sem rastreabilidade), portais MTE/ABNT (sem IA), sistemas de gestão SST (sem consulta normativa). O diferencial SafeCore é a combinação única de RAG normativo + citação exata + rastreabilidade para auditoria — nenhum concorrente tem os quatro juntos.</div></div>
+
+    <div class="ac res"><div class="an res">Ponto 6 — Resolvido</div><div class="at2">White-label não pode ser a última página</div><div class="ab2">Ticket de R$ 599-999 contra R$ 29 do Pro — é o maior driver de receita do negócio e estava escondido na última lâmina.</div><div class="aa2">→ White-label promovido para a aba Crescimento com destaque como "Ponto Principal". Se houver alguma consultoria em conversa — mesmo informal — isso deve ser mencionado na apresentação presencial como sinal de demanda real antes do lançamento.</div></div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function showS(id,btn){
+  document.querySelectorAll('.ps').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.pb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+// ── Filtros ───────────────────────────────────────────────────────────────
+const af=new Set(['NR','ABNT','LEI','ARTIGO']);
+function toggleFilter(btn,f){
+  if(af.has(f)){af.delete(f);btn.classList.remove('on');}
+  else{af.add(f);btn.classList.add('on');}
+}
+
+// ── Textarea auto-grow ────────────────────────────────────────────────────
+function autoGrow(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,160)+'px';
+}
+
+// ── Histórico de sessão ───────────────────────────────────────────────────
+const searchHistory=[];
+function addToHistory(q){
+  if(searchHistory.includes(q)||!q)return;
+  searchHistory.unshift(q);
+  if(searchHistory.length>5)searchHistory.pop();
+  renderHistory();
+}
+function renderHistory(){
+  const sec=document.getElementById('history-section');
+  const chips=document.getElementById('history-chips');
+  if(!searchHistory.length){sec.style.display='none';return;}
+  sec.style.display='block';
+  chips.innerHTML=searchHistory.map(q=>
+    `<button class="hchip" onclick="setQ(this.innerText)" title="${q}">${q}</button>`
+  ).join('');
+}
+
+// ── Set query ─────────────────────────────────────────────────────────────
+function setQ(t){
+  const inp=document.getElementById('query');
+  inp.value=t;
+  autoGrow(inp);
+  doSearch();
+}
+
+// ── Copiar ────────────────────────────────────────────────────────────────
+function copyText(btn,text){
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.classList.add('copied');
+    setTimeout(()=>btn.classList.remove('copied'),1800);
+  });
+}
+
+// ── Simulador interativo ──────────────────────────────────────────────────
+const planos = { starter: 19, pro: 49, mix: 34 };
+let planoAtual = 'starter';
+
+function setPlano(p, btn) {
+  planoAtual = p;
+  document.querySelectorAll('#sp-starter,#sp-pro,#sp-mix').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('sl-ticket').value = planos[p];
+  calc();
+}
+
+function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
+
+function calc() {
+  const users   = parseInt(document.getElementById('sl-users').value);
+  const searches= parseInt(document.getElementById('sl-searches').value);
+  const ticket  = parseInt(document.getElementById('sl-ticket').value);
+
+  document.getElementById('lbl-users').textContent    = fmt(users);
+  document.getElementById('lbl-searches').textContent = searches;
+  document.getElementById('lbl-ticket').textContent   = 'R$' + ticket;
+
+  const totalBuscas = users * searches;
+  const custoBRL    = totalBuscas * 0.017;
+  const receita     = users * ticket;
+  const margem      = receita - custoBRL;
+  const pct         = receita > 0 ? Math.round((margem / receita) * 100) : 0;
+
+  document.getElementById('res-buscas').textContent  = fmt(totalBuscas);
+  document.getElementById('res-custo').textContent   = '~R$' + fmt(custoBRL);
+  document.getElementById('res-receita').textContent = 'R$' + fmt(receita);
+  document.getElementById('res-margem').textContent  = 'R$' + fmt(margem) + ' / mês';
+  document.getElementById('res-pct').textContent     = pct + '%';
+
+  // Cor da margem
+  const cor = pct >= 70 ? '#34D399' : pct >= 40 ? '#FCD34D' : '#F87171';
+  document.getElementById('res-margem').style.color = cor;
+  document.getElementById('res-pct').style.color    = cor;
+  const card = document.getElementById('res-margem-card');
+  if (pct >= 70) {
+    card.style.background    = 'rgba(29,158,117,.08)';
+    card.style.borderColor   = 'rgba(29,158,117,.25)';
+  } else if (pct >= 40) {
+    card.style.background    = 'rgba(239,159,39,.07)';
+    card.style.borderColor   = 'rgba(239,159,39,.25)';
+  } else {
+    card.style.background    = 'rgba(226,75,74,.07)';
+    card.style.borderColor   = 'rgba(226,75,74,.25)';
+  }
+}
+
+// Inicializa simulador
+calc();
+
+async function doSearch(){
+  const q=document.getElementById('query').value.trim();
+  if(!q)return;
+  document.getElementById('hero').classList.add('collapsed');
+  document.getElementById('suggestions').style.display='none';
+  addToHistory(q);
+  const btn=document.getElementById('sbtn');
+  const ld=document.getElementById('ld');
+  const res=document.getElementById('results');
+  btn.disabled=true;ld.style.display='flex';res.innerHTML='';
+  const sys=`Voce e um especialista em seguranca do trabalho no Brasil com acesso a base normativa via RAG.
+Responda APENAS em JSON valido, sem markdown, sem texto fora do JSON:
+{"synthesis":"Resumo direto em 2-3 frases citando a norma principal","results":[{"source_type":"NR|ABNT|LEI|ARTIGO","title":"Titulo da norma ou documento","reference":"Ex: NR-35, item 35.4.1","trecho":"Trecho literal ou fiel da norma (max 2 linhas)","summary":"Interpretacao tecnica objetiva em 2 frases","relevance":95}]}
+Fontes permitidas: ${[...af].join(', ')}. Retorne 2 a 4 resultados relevantes. Campo trecho e obrigatorio.`;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,messages:[{role:'user',content:q}]})});
+    const d=await r.json();
+    const clean=(d.content?.[0]?.text||'').replace(/```json|```/g,'').trim();
+    const p=JSON.parse(clean);
+    ld.style.display='none';btn.disabled=false;
+    let html='';
+    if(p.synthesis){
+      html+=`<div class="synthesis">
+        <div class="syn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Síntese</div>
+        <div class="syn-text">${p.synthesis}</div>
+        <div class="rag-tag"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Base normativa oficial · RAG</div>
+      </div>`;
+    }
+    if(p.results&&p.results.length){
+      html+=`<div class="result-count">${p.results.length} fonte${p.results.length>1?'s':''} encontrada${p.results.length>1?'s':''}</div>`;
+    }
+    (p.results||[]).forEach((r,i)=>{
+      const copyContent=`${r.reference}\n"${r.trecho}"\n\n${r.summary}`;
+      const safe=copyContent.replace(/\\/g,'\\\\').replace(/`/g,"'").replace(/"/g,'\\"');
+      html+=`<div class="rcard" style="animation-delay:${i*60}ms">
+        <div class="rcard-header">
+          <div class="rcard-left"><div class="source-dot dot-${r.source_type}"></div><span class="rtitle">${r.title}</span></div>
+          <div class="rcard-actions">
+            <span class="rbadge rbadge-${r.source_type}">${r.source_type}</span>
+            <button class="copy-btn" onclick='copyText(this,"${safe}")' title="Copiar referência">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+        ${r.trecho?`<div class="trecho-block">"${r.trecho}"</div>`:''}
+        <div class="rsum">${r.summary}</div>
+        <div class="rref-row"><span class="rref">${r.reference}</span></div>
+      </div>`;
+    });
+    res.innerHTML=html||'<div class="empty-state"><p>Nenhum resultado encontrado para os filtros selecionados.</p></div>';
+  }catch(e){
+    ld.style.display='none';btn.disabled=false;
+    res.innerHTML='<div class="empty-state"><p>Erro ao consultar. Verifique sua conexão e tente novamente.</p></div>';
+  }
+}
+</script>
+</body>
+</html>
