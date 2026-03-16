@@ -6,7 +6,7 @@
 <title>SafeCore AI — Segurança do Trabalho</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -26,6 +26,86 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--off);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
+/* ── SEARCH PAGE — Identidade visual do Pitch (navy + teal + blue) ── */
+body.search-active{background:#0A0F1E}
+body.search-active nav{background:rgba(10,15,30,.96);border-bottom-color:rgba(255,255,255,.07)}
+body.search-active .bn{color:#fff}
+body.search-active .ntab{color:rgba(255,255,255,.42)}
+body.search-active .ntab:hover{color:#fff;background:rgba(255,255,255,.07)}
+body.search-active .ntab.active{background:var(--blue);border-color:var(--blue)}
+body.search-active .bn em{color:#60A5FA}
+
+/* Hero */
+body.search-active .hero h1{color:#fff}
+body.search-active .hero h1 em{color:#60A5FA}
+body.search-active .hero-eyebrow{
+  color:#6EE7B7;
+  background:rgba(29,158,117,.1);
+  border:1px solid rgba(29,158,117,.2);
+  padding:4px 12px;border-radius:20px;
+}
+body.search-active .hero-eyebrow-dot{background:#1D9E75;box-shadow:0 0 8px rgba(29,158,117,.6)}
+body.search-active .hero-sub{color:rgba(255,255,255,.4)}
+
+/* Área / vertical */
+body.search-active .vertical-label{color:rgba(255,255,255,.3)}
+body.search-active .vtag{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.09);color:rgba(255,255,255,.45)}
+body.search-active .vtag:hover{border-color:rgba(96,165,250,.5);color:#93C5FD;background:rgba(26,79,214,.07)}
+body.search-active .vtag.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 2px 10px rgba(26,79,214,.3)}
+
+/* Search box */
+body.search-active .search-box{
+  background:rgba(255,255,255,.04);
+  border-color:rgba(255,255,255,.1);
+}
+body.search-active .search-box:focus-within{
+  border-color:rgba(96,165,250,.6);
+  box-shadow:0 0 0 3px rgba(26,79,214,.15);
+}
+body.search-active .search-input{background:transparent;color:#fff}
+body.search-active .search-input::placeholder{color:rgba(255,255,255,.2)}
+body.search-active .search-hint{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.09);color:rgba(255,255,255,.25)}
+body.search-active .search-submit{background:var(--teal)}
+body.search-active .search-submit:hover{background:#158e68}
+
+/* Filtros */
+body.search-active .filter-label{color:rgba(255,255,255,.28)}
+body.search-active .ftag{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.38)}
+body.search-active .ftag:hover{border-color:rgba(96,165,250,.4);color:#93C5FD}
+body.search-active .ftag.on{background:rgba(26,79,214,.12);border-color:rgba(26,79,214,.4);color:#93C5FD}
+body.search-active .ftag:not(.on){opacity:.4;text-decoration:none}
+
+/* Histórico */
+body.search-active .history-label{color:rgba(255,255,255,.22)}
+body.search-active .hchip{border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.38)}
+body.search-active .hchip:hover{border-color:rgba(96,165,250,.3);color:#93C5FD}
+
+/* Sugestões */
+body.search-active .sug-label{color:rgba(255,255,255,.22)}
+body.search-active .schip{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.42)}
+body.search-active .schip:hover{border-color:rgba(29,158,117,.4);color:#6EE7B7;background:rgba(29,158,117,.07)}
+
+/* Loading */
+body.search-active .ltext{color:rgba(255,255,255,.38)}
+body.search-active .ldot{background:#1D9E75}
+
+/* Síntese */
+body.search-active .synthesis{background:rgba(29,158,117,.06);border-color:rgba(29,158,117,.22);border-left-color:var(--teal)}
+body.search-active .syn-label{color:#6EE7B7}
+body.search-active .syn-text{color:rgba(255,255,255,.82)}
+body.search-active .rag-tag{background:rgba(29,158,117,.07);border-color:rgba(29,158,117,.15);color:rgba(255,255,255,.32)}
+
+/* Result cards */
+body.search-active .rcard{border-bottom-color:rgba(255,255,255,.06)}
+body.search-active .rtitle{color:rgba(255,255,255,.88)}
+body.search-active .rcard:hover .rtitle{color:#93C5FD}
+body.search-active .rsum{color:rgba(255,255,255,.48)}
+body.search-active .trecho-block{background:rgba(0,0,0,.25);border-left-color:rgba(29,158,117,.3);color:rgba(255,255,255,.58)}
+body.search-active .rref{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.28)}
+body.search-active .copy-btn{border-color:rgba(255,255,255,.08)}
+body.search-active .copy-btn:hover{background:rgba(255,255,255,.07)}
+body.search-active .result-count{color:rgba(255,255,255,.22)}
+body.search-active .empty-state p{color:rgba(255,255,255,.32)}
 
 /* ── NAV ─────────────────────────────────────────────────────────── */
 nav{
@@ -55,10 +135,13 @@ nav{
 @keyframes pulse2{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
 @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.sp{max-width:680px;margin:0 auto;padding:0 24px 100px}
+.sp{max-width:680px;margin:0 auto;padding:0 24px 100px;position:relative;z-index:1}
+#particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:1;transition:opacity .8s ease}
+#particle-canvas.hidden{opacity:0}
+#page-search{position:relative}
 
 /* Hero */
-.hero{padding:60px 0 40px;text-align:center;transition:all .38s cubic-bezier(.4,0,.2,1)}
+.hero{padding:48px 0 32px;text-align:center;transition:all .38s cubic-bezier(.4,0,.2,1)}
 .hero.collapsed{padding:24px 0 18px}
 .hero.collapsed .hero-sub{display:none}
 .hero.collapsed h1{font-size:19px;letter-spacing:-.3px}
@@ -75,15 +158,17 @@ nav{
   animation:pulse2 2.5s ease-in-out infinite;
 }
 .hero h1{
-  font-family:var(--fb);font-size:38px;font-weight:700;
-  letter-spacing:-1px;line-height:1.1;
+  font-family:var(--fb);font-size:36px;font-weight:700;
+  letter-spacing:-1px;line-height:1.15;
   color:var(--g800);margin-bottom:14px;
   transition:all .38s ease;
 }
+.hero h1 em{color:var(--g700);font-style:normal;display:block}
 .hero h1 em{color:var(--g700);font-style:normal}
 .hero-sub{
-  font-size:14px;color:var(--ink3);
-  line-height:1.75;max-width:440px;margin:0 auto;font-weight:400;
+  font-size:13px;color:var(--ink3);
+  line-height:1.75;max-width:500px;margin:0 auto;font-weight:400;
+  letter-spacing:.1px;
 }
 
 /* Search box */
@@ -134,8 +219,8 @@ nav{
 .search-submit svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
 /* Filtros */
-.filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.filter-label{font-size:11px;color:var(--ink4);margin-right:2px;font-weight:500}
+.filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.filter-label{font-size:10px;color:var(--ink4);margin-right:2px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
 .ftag{
   font-family:var(--fb);font-size:11px;font-weight:500;
   padding:4px 12px;border-radius:20px;
@@ -148,7 +233,7 @@ nav{
   background:var(--g50);border-color:var(--g400);
   color:var(--g700);font-weight:600;
 }
-.ftag:not(.on){opacity:.55;text-decoration:line-through;text-decoration-color:var(--ink4)}
+.ftag:not(.on){opacity:.45}
 
 /* Histórico */
 .history-section{margin-bottom:20px;animation:fadeIn .3s ease}
@@ -169,8 +254,8 @@ nav{
 .hchip:hover{border-color:var(--g400);color:var(--g700);background:var(--g50)}
 
 /* Sugestões */
-.suggestions{margin-bottom:28px}
-.sug-label{font-size:11px;color:var(--ink4);font-weight:500;margin-bottom:9px}
+.suggestions{margin-bottom:20px}
+.sug-label{font-size:10px;color:var(--ink4);font-weight:600;margin-bottom:8px;letter-spacing:.4px;text-transform:uppercase}
 .sug-chips{display:flex;gap:6px;flex-wrap:wrap}
 .schip{
   font-size:12px;font-family:var(--fb);font-weight:500;
@@ -323,6 +408,38 @@ nav{
 .empty-state{text-align:center;padding:64px 0;color:var(--ink4)}
 .empty-state p{font-size:13px;line-height:1.85;color:var(--ink3)}
 
+/* Vertical selector */
+.vertical-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.vertical-label{font-size:10px;color:var(--ink4);font-weight:600;margin-right:2px;white-space:nowrap;letter-spacing:.3px;text-transform:uppercase}
+.vtag{
+  font-family:var(--fb);font-size:11.5px;font-weight:500;
+  padding:5px 14px;border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--white);color:var(--ink3);
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.vtag:hover{border-color:var(--g400);color:var(--g700);background:var(--g50)}
+.vtag.active{
+  background:var(--g700);border-color:var(--g700);
+  color:white;font-weight:600;
+  box-shadow:0 2px 8px rgba(29,106,71,.2);
+}
+
+/* FAQ Investidor */
+.faq-item{border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);margin-bottom:8px;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:rgba(255,255,255,.15)}
+.faq-item.open{border-color:rgba(29,158,117,.35)}
+.faq-q{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;cursor:pointer;user-select:none}
+.faq-num{font-family:var(--fb);font-size:10px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:.5px;min-width:24px;padding-top:2px;flex-shrink:0}
+.faq-item.open .faq-num{color:var(--teal)}
+.faq-text{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.4;flex:1}
+.faq-item.open .faq-text{color:#fff}
+.faq-arrow{font-size:18px;color:rgba(255,255,255,.2);transition:transform .25s;flex-shrink:0;line-height:1}
+.faq-item.open .faq-arrow{transform:rotate(90deg);color:var(--teal)}
+.faq-a{display:none;padding:0 18px 18px 54px;font-size:13px;color:rgba(255,255,255,.55);line-height:1.8}
+.faq-a p{margin-bottom:10px}.faq-a p:last-child{margin-bottom:0}
+.faq-item.open .faq-a{display:block;animation:fadeUp .2s ease}
+
 /* ── PITCH PAGE ──────────────────────────────────────────────────── */
 .pp{max-width:940px;margin:0 auto;padding:36px 24px 80px}
 #page-pitch{background:#0A0F1E;color:#fff;min-height:100vh}
@@ -469,6 +586,7 @@ nav{
 </head>
 <body>
 
+<canvas id="particle-canvas"></canvas>
 <nav>
   <div class="ni">
     <a class="brand" href="#">
@@ -484,27 +602,34 @@ nav{
 
 <!-- SEARCH PAGE -->
 <div id="page-search" class="page active">
+<canvas id="particle-canvas"></canvas>
 <div class="sp">
 
   <div class="hero" id="hero">
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-dot"></span>
-      Base normativa oficial · RAG
+      Inteligência normativa · RAG oficial
     </div>
-    <h1>Busca em <em>Segurança<br>do Trabalho</em></h1>
-    <p class="hero-sub">Respostas com citação exata de NRs, CLT e legislação.<br>Não probabilidade — documento real.</p>
+    <h1><em>Plataforma brasileira</em><br>de inteligência normativa</h1>
+    <p class="hero-sub">SST · VISA · Meio Ambiente · Construção · Saúde<br>Respostas com citação exata e fonte oficial.</p>
+  </div>
+
+  <div class="vertical-row" id="vertical-row">
+    <span class="vertical-label">Área</span>
+    <button class="vtag active" onclick="setVertical(this,'sst')"   data-ph="Ex: EPIs obrigatórios para trabalho em altura NR-35">SST</button>
+    <button class="vtag"        onclick="setVertical(this,'visa')"  data-ph="Ex: Requisitos RDC 216 para serviços de alimentação">VISA</button>
+    <button class="vtag"        onclick="setVertical(this,'amb')"   data-ph="Ex: Obrigações do PGRSS para clínicas médicas">Meio Ambiente</button>
+    <button class="vtag"        onclick="setVertical(this,'obras')" data-ph="Ex: NR-18 requisitos de canteiro de obras">Construção</button>
+    <button class="vtag"        onclick="setVertical(this,'saude')" data-ph="Ex: Normas CFM para telemedicina">Saúde</button>
+    <button class="vtag"        onclick="setVertical(this,'trab')"  data-ph="Ex: Jornada de trabalho motoristas CLT art. 235">Trabalhista</button>
   </div>
 
   <div class="search-wrap">
     <div class="search-box">
-      <textarea
-        class="search-input"
-        id="query"
-        rows="1"
-        placeholder="Ex: Quais EPIs são obrigatórios para trabalho em altura?"
+      <textarea class="search-input" id="query" rows="1"
+        placeholder="Ex: EPIs obrigatórios para trabalho em altura NR-35"
         onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();doSearch();}"
-        oninput="autoGrow(this)"
-      ></textarea>
+        oninput="autoGrow(this)"></textarea>
       <span class="search-hint">↵</span>
       <button class="search-submit" id="sbtn" onclick="doSearch()" title="Pesquisar (Enter)">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
@@ -530,13 +655,11 @@ nav{
 
   <div class="suggestions" id="suggestions">
     <div class="sug-label">Experimente</div>
-    <div class="sug-chips">
+    <div class="sug-chips" id="sug-chips">
       <span class="schip" onclick="setQ(this.innerText)">EPI para solda elétrica</span>
       <span class="schip" onclick="setQ(this.innerText)">NR-10 eletricistas</span>
       <span class="schip" onclick="setQ(this.innerText)">Trabalho em altura NR-35</span>
-      <span class="schip" onclick="setQ(this.innerText)">CIPA composição</span>
       <span class="schip" onclick="setQ(this.innerText)">Espaço confinado NR-33</span>
-      <span class="schip" onclick="setQ(this.innerText)">PCMSO periodicidade</span>
     </div>
   </div>
 
@@ -547,7 +670,7 @@ nav{
 
   <div class="results-wrap" id="results">
     <div class="empty-state">
-      <p>Digite uma pergunta para começar.<br>As respostas citam o item e o trecho exato da norma.</p>
+      <p>Selecione uma área e faça sua pergunta.<br>As respostas citam o item e o trecho exato da norma vigente.</p>
       <button onclick="setQ('Quais EPIs são obrigatórios para trabalho em altura?')" style="margin-top:14px;font-family:var(--fb);font-size:12px;font-weight:500;color:var(--g700);background:var(--g50);border:1px solid var(--g100);padding:7px 16px;border-radius:8px;cursor:pointer;transition:all .15s" onmouseover="this.style.background='var(--g100)'" onmouseout="this.style.background='var(--g50)'">
         Tentar: EPIs para trabalho em altura →
       </button>
@@ -579,15 +702,15 @@ nav{
     <div class="cover">
       <div class="ctag">Pitch Deck · Seed Round · Marco 2026</div>
       <h1>Safe<em>Core</em> AI</h1>
-      <p class="csub">Plataforma de busca inteligente em normas, legislação<br>e artigos de Segurança do Trabalho — powered by IA.</p>
+      <p class="csub">Plataforma brasileira de inteligência normativa regulatória —<br>SST, VISA, Meio Ambiente e muito mais, powered by IA.</p>
       <div class="fbadge">
         <div class="fav">AO</div>
         <div><div class="fn">Alisson de Oliveira</div><div class="fr">Fundador & CEO</div></div>
       </div>
       <div class="cstats">
         <div class="cs"><div class="csv">38 NRs</div><div class="csl">indexadas — todas públicas</div></div>
-        <div class="cs"><div class="csv">R$ 2,1 bi</div><div class="csl">mercado SST Brasil</div></div>
-        <div class="cs"><div class="csv">+3 mi</div><div class="csl">profissionais de SST</div></div>
+        <div class="cs"><div class="csv">R$ 18 bi</div><div class="csl">TAM 10 verticais BR</div></div>
+        <div class="cs"><div class="csv">9+ mi</div><div class="csl">profissionais regulados</div></div>
       </div>
     </div>
     <div class="notice">Confidencial — não distribuir sem autorização do fundador.</div>
@@ -693,7 +816,7 @@ nav{
   <!-- SOLUCAO -->
   <div id="s-solution" class="ps">
     <div class="st">A Solução</div>
-    <div class="ss">SafeCore AI — o Consensus.app da Segurança do Trabalho. Busca semântica + síntese com citação normativa precisa.</div>
+    <div class="ss">SafeCore AI — a plataforma de inteligência normativa do Brasil. Começa em SST, escala para todas as verticais regulatórias.</div>
     <div class="g2 mb2">
       <div class="pc ab"><div class="pci" style="background:rgba(26,79,214,.18);color:#60A5FA">🔎</div><div class="pct">Busca Semântica</div><div class="pcd">Entende a intenção, não só palavras-chave. Retorna o trecho exato da norma com citação do item.</div></div>
       <div class="pc at"><div class="pci" style="background:rgba(29,158,117,.18);color:#34D399">📋</div><div class="pct">Síntese com Fontes</div><div class="pcd">Resposta direta + citação da NR, ABNT ou lei. Rastreabilidade total para auditorias e fiscalizações.</div></div>
@@ -726,6 +849,107 @@ nav{
       <div class="pc ar"><div class="pct">O risco das IAs gerais em SST</div><div class="pcd">Uma IA geral pode inventar um item de NR que não existe, usar redação já revogada, ou misturar normas. Multa por infração pode chegar a R$ 12.000 — e a responsabilidade é do profissional, não da IA.</div></div>
       <div class="pc at"><div class="pct">A analogia que fecha o argumento</div><div class="pcd">ChatGPT é um médico clínico geral. SafeCore AI é o cardiologista. O especialista cobra mais, é mais confiável — e o paciente não troca quando o assunto é sério. Em SST, o assunto é sempre sério.</div></div>
     </div>
+
+    <!-- Como o ecossistema LLM funciona — por que não construir do zero -->
+    <div style="margin-top:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:16px 18px">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px">Por que usar API e não treinar uma IA própria</div>
+
+      <!-- Ecossistema -->
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px">
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:13px">
+          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:6px">Treinar do zero</div>
+          <div style="font-size:18px;font-weight:700;color:#F87171;margin-bottom:4px">$50M–$500M</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.6">Custo de treinamento de um LLM competitivo. Requer milhares de GPUs H100, meses de processamento e equipe de centenas de engenheiros. OpenAI, Google e Anthropic gastaram isso.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:13px">
+          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:6px">Fine-tuning próprio</div>
+          <div style="font-size:18px;font-weight:700;color:#FCD34D;margin-bottom:4px">$10K–$500K</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.6">Adaptar um modelo existente para um domínio. Ainda requer dados curados, infraestrutura de GPU e equipe técnica especializada. Resultado menos previsível.</div>
+        </div>
+        <div style="background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.25);border-radius:var(--r);padding:13px">
+          <div style="font-size:11px;font-weight:700;color:#34D399;margin-bottom:6px">API + RAG — modelo SafeCore</div>
+          <div style="font-size:18px;font-weight:700;color:#34D399;margin-bottom:4px">~R$0,017/busca</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6">Usa o melhor modelo do mundo via API. O diferencial está na base de conhecimento curada e no RAG normativo — não no modelo em si. Escala sem custo fixo de infra.</div>
+        </div>
+      </div>
+
+      <!-- Como as grandes IAs funcionam -->
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Como funciona o ecossistema hoje</div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;border-radius:10px;overflow:hidden;margin-bottom:14px">
+        <div style="background:rgba(255,255,255,.04);padding:12px;text-align:center">
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:4px">Anthropic<br>OpenAI<br>Google</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.35);line-height:1.5">Treinam e hospedam os modelos. Investiram bilhões. Cobram por token usado.</div>
+          <div style="margin-top:6px;font-size:9px;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.5px">Fundação</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);padding:12px;text-align:center">
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:4px">API pública</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.35);line-height:1.5">Qualquer empresa acessa o modelo via HTTP. Paga por uso — sem servidor próprio.</div>
+          <div style="margin-top:6px;font-size:9px;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.5px">Acesso</div>
+        </div>
+        <div style="background:rgba(26,79,214,.1);border:1px solid rgba(26,79,214,.2);padding:12px;text-align:center">
+          <div style="font-size:12px;font-weight:700;color:#93C5FD;margin-bottom:4px">SafeCore AI</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.45);line-height:1.5">Constrói base normativa + RAG + produto. O diferencial é o conhecimento curado, não o modelo.</div>
+          <div style="margin-top:6px;font-size:9px;font-weight:700;color:#93C5FD;text-transform:uppercase;letter-spacing:.5px">Você está aqui</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);padding:12px;text-align:center">
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:4px">Usuário final</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.35);line-height:1.5">Profissional de SST, VISA, ambiental — paga assinatura e usa o produto.</div>
+          <div style="margin-top:6px;font-size:9px;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.5px">Cliente</div>
+        </div>
+      </div>
+
+      <!-- Empresas de referência -->
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Quem já faz isso — empresas que constroem produtos sobre APIs de LLM</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(26,79,214,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#93C5FD;flex-shrink:0">N</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Notion AI</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">Usa API da OpenAI para resumir documentos, escrever textos e responder perguntas sobre suas notas. Não treinou nenhum modelo — só integrou a API no produto que já existia.</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(29,158,117,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#34D399;flex-shrink:0">P</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Perplexity</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">Buscador com IA que responde com fontes citadas. Usa múltiplos LLMs via API + busca na web. Avaliado em $9 bi. O diferencial é a experiência de busca — não o modelo.</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(239,159,39,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#FCD34D;flex-shrink:0">C</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Consensus</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">O referencial do SafeCore AI. Buscador de artigos científicos com IA — responde com base em papers reais, citando fontes. Usa API de LLM + base vetorial de artigos. Exatamente o modelo que estamos replicando para SST.</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(83,75,183,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#C4B5FD;flex-shrink:0">H</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Harvey AI</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">IA para advogados — consulta jurisprudência, redige contratos, analisa processos. Usa Claude da Anthropic via API + base jurídica curada. Avaliado em $3 bi. Mesma lógica do SafeCore para direito.</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(29,158,117,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#34D399;flex-shrink:0">J</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Jasper</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">Plataforma de marketing com IA — gera textos, anúncios e conteúdo. Construído inteiramente sobre API de LLMs. Faturou $75M em receita recorrente sem treinar nenhum modelo próprio.</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:11px 13px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:rgba(26,79,214,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#93C5FD;flex-shrink:0">I</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:2px">Intercom Fin</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.55">Atendimento ao cliente com IA — responde perguntas com base na documentação da empresa. RAG sobre base de conhecimento proprietária + API Claude. Resolve 40% dos tickets sem humano.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;background:rgba(29,158,117,.06);border:1px solid rgba(29,158,117,.15);border-radius:var(--r);padding:10px 14px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.7">
+        <strong style="color:#34D399">O padrão é claro:</strong> as empresas mais valiosas de IA aplicada não treinaram modelos — construíram produtos especializados sobre APIs de LLMs. O valor está no domínio, na base de conhecimento e na experiência do usuário. Isso é exatamente o que o SafeCore AI faz para o mercado normativo brasileiro.
+      </div>
+    </div>
+
   </div>
 
   <!-- MODELO -->
@@ -917,16 +1141,101 @@ nav{
   <!-- MERCADO -->
   <div id="s-mercado" class="ps">
     <div class="st">Mercado Endereçável</div>
-    <div class="ss">Setor regulado por lei, obrigatório em todas as empresas, com atualização constante.</div>
-    <div class="g3 mb2">
-      <div class="pc aa"><div class="pct">TAM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:var(--amber);margin:7px 0">R$ 2,1 bi/ano</div><div class="pcd">Mercado total SST Brasil — treinamentos, consultorias, softwares, EPIs.</div></div>
-      <div class="pc" style="border-color:rgba(239,159,39,.22)"><div class="pct">SAM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:#FCD34D;margin:7px 0">R$ 420 mi/ano</div><div class="pcd">Profissionais de SST e consultorias com gestão normativa.</div></div>
-      <div class="pc"><div class="pct">SOM</div><div style="font-family:var(--fh);font-size:20px;font-weight:700;color:#F59E0B;margin:7px 0">R$ 42 mi/ano</div><div class="pcd">Técnicos e consultores — alvo inicial antes da expansão B2B.</div></div>
+    <div class="ss">Uma plataforma. Dez verticais. Mais de 9 milhões de profissionais com a mesma dor normativa no Brasil.</div>
+
+    <!-- Visão expandida -->
+    <div style="background:rgba(29,158,117,.07);border:1px solid rgba(29,158,117,.2);border-radius:var(--rl);padding:16px 18px;margin-bottom:18px">
+      <div style="font-size:10px;font-weight:700;color:#34D399;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px">A visão completa</div>
+      <div style="font-size:15px;font-weight:600;color:#fff;line-height:1.5;margin-bottom:8px">"SafeCore — Plataforma brasileira de inteligência normativa regulatória"</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.7">Qualquer profissional regulado no Brasil consulta, interpreta e se mantém atualizado sobre as normas da sua área — com citação exata, rastreabilidade e alertas automáticos. Uma arquitetura. Dez verticais. Receita que multiplica sem reinventar a roda.</div>
     </div>
-    <div class="pc mb"><div class="pct">Concorrentes — quem são e como nos diferenciamos</div><div class="pcd" style="margin-top:8px"><strong style="color:white">ChatGPT / Gemini (indiretos):</strong> IAs gerais sem base normativa oficial, sem rastreabilidade, com risco de alucinação normativa.<br><br><strong style="color:white">Portais MTE / ABNT Coleções:</strong> Repositórios estáticos — sem busca semântica, sem síntese, sem citação automática.<br><br><strong style="color:white">Sistemas de gestão SST (eSocial, TOTVS RH):</strong> Focados em registro operacional — não em consulta e interpretação normativa.<br><br><strong style="color:white">Diferencial SafeCore:</strong> Único produto que combina base normativa oficial + RAG + citação exata + rastreabilidade para auditoria.</div></div>
+
+    <!-- TAM expandido -->
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px">
+      <div class="pc aa">
+        <div class="pct">TAM expandido</div>
+        <div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--amber);margin:6px 0">R$ 18 bi/ano</div>
+        <div class="pcd">10 verticais regulatórias no Brasil — SST, VISA, Ambiental, Saúde, Construção e mais.</div>
+      </div>
+      <div class="pc" style="border-color:rgba(239,159,39,.22)">
+        <div class="pct">SAM fase 1–3</div>
+        <div style="font-family:var(--fh);font-size:22px;font-weight:700;color:#FCD34D;margin:6px 0">R$ 2,8 bi/ano</div>
+        <div class="pcd">SST + VISA + Meio Ambiente — primeiras três verticais com maior urgência normativa.</div>
+      </div>
+      <div class="pc">
+        <div class="pct">SOM inicial</div>
+        <div style="font-family:var(--fh);font-size:22px;font-weight:700;color:#F59E0B;margin:6px 0">R$ 42 mi/ano</div>
+        <div class="pcd">Técnicos e consultores de SST — alvo do MVP antes da expansão por verticais.</div>
+      </div>
+    </div>
+
+    <!-- Tabela de verticais -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);overflow:hidden;margin-bottom:14px">
+      <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;background:rgba(255,255,255,.06);padding:8px 16px;font-size:10px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.5px;text-transform:uppercase;gap:8px">
+        <span>Vertical</span><span>Normas principais</span><span>Profissionais</span><span>Fase</span>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">SST — Segurança do Trabalho</div>
+        <div style="color:rgba(255,255,255,.45)">NRs, ABNT, CLT</div>
+        <div style="color:rgba(255,255,255,.55)">3,1 milhões</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(29,158,117,.15);color:#34D399">MVP</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Construção Civil</div>
+        <div style="color:rgba(255,255,255,.45)">NR-18, NBRs, Código de Obras</div>
+        <div style="color:rgba(255,255,255,.55)">2,8 milhões</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(26,79,214,.15);color:#93C5FD">Fase 2</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Alimentos / VISA</div>
+        <div style="color:rgba(255,255,255,.45)">RDCs ANVISA, Portarias MAPA</div>
+        <div style="color:rgba(255,255,255,.55)">1,2 milhões</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(26,79,214,.15);color:#93C5FD">Fase 2</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Compliance Trabalhista</div>
+        <div style="color:rgba(255,255,255,.45)">CLT, eSocial, TST, CCTs</div>
+        <div style="color:rgba(255,255,255,.55)">800 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(239,159,39,.15);color:#FCD34D">Fase 3</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Saúde — Hospitais e Clínicas</div>
+        <div style="color:rgba(255,255,255,.45)">CFM, COFEN, RDCs</div>
+        <div style="color:rgba(255,255,255,.55)">600 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(239,159,39,.15);color:#FCD34D">Fase 3</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Meio Ambiente</div>
+        <div style="color:rgba(255,255,255,.45)">CONAMA, PGRSS, PGRS</div>
+        <div style="color:rgba(255,255,255,.55)">400 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(239,159,39,.15);color:#FCD34D">Fase 3</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Farmácias</div>
+        <div style="color:rgba(255,255,255,.45)">RDC 44, CFF, ANVISA</div>
+        <div style="color:rgba(255,255,255,.55)">350 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">Fase 4</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Transporte e Logística</div>
+        <div style="color:rgba(255,255,255,.45)">ANTT, CONTRAN, NR-29</div>
+        <div style="color:rgba(255,255,255,.55)">300 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">Fase 4</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Energia Elétrica</div>
+        <div style="color:rgba(255,255,255,.45)">NR-10, ANEEL, NBR 5410</div>
+        <div style="color:rgba(255,255,255,.55)">200 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">Fase 4</div>
+      </div><div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;gap:8px;align-items:center">
+        <div style="font-weight:600;color:#fff">Petróleo e Gás</div>
+        <div style="color:rgba(255,255,255,.45)">NR-20, NR-33, ANP</div>
+        <div style="color:rgba(255,255,255,.55)">80 mil</div>
+        <div style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">Fase 4</div>
+      </div>
+    </div>
+
+    <!-- Insight chave -->
+    <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:12px 16px;text-align:center">
+      <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.7">Mesma arquitetura RAG. Mesma lógica de planos. Mesma infraestrutura Supabase.</div>
+      <div style="font-size:14px;font-weight:600;color:#fff;margin-top:4px">A base de conhecimento muda — o produto escala. <span style="color:#34D399">9+ milhões de profissionais, zero reinvestimento em tech.</span></div>
+    </div>
+
   </div>
 
-  <!-- ROADMAP -->
+<!-- ROADMAP -->
   <div id="s-roadmap" class="ps">
     <div class="st">Tração & Roadmap</div>
     <div class="ss">O que já foi construído e os próximos marcos.</div>
@@ -961,45 +1270,262 @@ nav{
     </table>
     <div class="pc ab mb"><div class="pct">Premissas revisadas</div><div class="pcd" style="margin-top:6px">• Churn 2%/mês (~21% ao ano) — realista para SaaS especializado com alta dependência normativa<br>• CAC R$ 60 via SEO e comunidades SST — crescimento orgânico validado<br>• Com 2%/mês de churn e CAC R$ 60, atingir 3.000 usuários no Ano 3 requer ~350 novos/mês</div></div>
     <div class="notice"><strong>Nota sobre churn:</strong> Versão anterior usava 5%/mês (~46%/ano), tornando as projeções inconsistentes com o CAC. Revisado para 2%/mês — os dois números agora fecham matematicamente.</div>
+
+    <!-- Explicação Churn + CAC para o investidor -->
+    <div style="margin-top:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:16px 18px">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px">Glossário estratégico — o que esses números significam</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+
+        <div style="background:rgba(26,79,214,.08);border:1px solid rgba(26,79,214,.2);border-radius:var(--r);padding:14px">
+          <div style="font-size:12px;font-weight:700;color:#93C5FD;margin-bottom:6px">Churn — taxa de cancelamento</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.7">É quantos usuários <strong style="color:rgba(255,255,255,.8)">cancelam por mês</strong>. Com 2% de churn, de cada 100 usuários pagantes, 2 saem todo mês. É o oposto da retenção — churn alto é um balde furado: não adianta trazer clientes se eles saem na mesma velocidade.</div>
+          <div style="margin-top:8px;background:rgba(26,79,214,.1);border-radius:6px;padding:8px 10px;font-size:11px;color:#93C5FD">SafeCore AI: 2%/mês — baixo porque a dependência normativa cria retenção natural. O profissional que usa toda semana dificilmente cancela.</div>
+        </div>
+
+        <div style="background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:var(--r);padding:14px">
+          <div style="font-size:12px;font-weight:700;color:#34D399;margin-bottom:6px">CAC — custo de aquisição de cliente</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.7">É <strong style="color:rgba(255,255,255,.8)">quanto você gasta para conquistar 1 novo cliente</strong> pagante — somando tempo em SEO, posts em comunidades, indicações. CAC de R$60 significa que cada novo assinante custou R$60 para chegar até você.</div>
+          <div style="margin-top:8px;background:rgba(29,158,117,.1);border-radius:6px;padding:8px 10px;font-size:11px;color:#34D399">SafeCore AI: R$60 via SEO + comunidades SST — crescimento orgânico, sem anúncios pagos no início.</div>
+        </div>
+
+      </div>
+
+      <!-- LTV/CAC ratio -->
+      <div style="background:rgba(255,255,255,.03);border-radius:var(--r);padding:12px 14px">
+        <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:10px">Por que os dois andam juntos — a equação que o investidor vai calcular:</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="text-align:center;padding:8px 14px;background:rgba(255,255,255,.04);border-radius:8px">
+            <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:3px">Ticket médio</div>
+            <div style="font-size:16px;font-weight:700;color:#fff">R$29/mês</div>
+          </div>
+          <div style="color:rgba(255,255,255,.2);font-size:18px">×</div>
+          <div style="text-align:center;padding:8px 14px;background:rgba(255,255,255,.04);border-radius:8px">
+            <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:3px">Tempo médio (1÷2%)</div>
+            <div style="font-size:16px;font-weight:700;color:#fff">50 meses</div>
+          </div>
+          <div style="color:rgba(255,255,255,.2);font-size:18px">=</div>
+          <div style="text-align:center;padding:8px 14px;background:rgba(26,79,214,.12);border:1px solid rgba(26,79,214,.25);border-radius:8px">
+            <div style="font-size:10px;color:#93C5FD;margin-bottom:3px">LTV por cliente</div>
+            <div style="font-size:16px;font-weight:700;color:#93C5FD">R$1.450</div>
+          </div>
+          <div style="color:rgba(255,255,255,.2);font-size:18px">÷</div>
+          <div style="text-align:center;padding:8px 14px;background:rgba(255,255,255,.04);border-radius:8px">
+            <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:3px">CAC</div>
+            <div style="font-size:16px;font-weight:700;color:#fff">R$60</div>
+          </div>
+          <div style="color:rgba(255,255,255,.2);font-size:18px">=</div>
+          <div style="text-align:center;padding:10px 18px;background:rgba(29,158,117,.12);border:1px solid rgba(29,158,117,.3);border-radius:8px">
+            <div style="font-size:10px;color:#34D399;margin-bottom:3px">LTV/CAC — ideal é 3:1</div>
+            <div style="font-size:20px;font-weight:700;color:#34D399">24:1</div>
+          </div>
+        </div>
+        <div style="font-size:11.5px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6">Para cada R$60 investido em aquisição, o SafeCore AI recupera R$1.450 ao longo do tempo. Ratio de 24:1 — muito acima do mínimo saudável de 3:1.</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- CRESCIMENTO -->
   <div id="s-crescimento" class="ps">
-    <div class="st">Próximas Fronteiras</div>
-    <div class="ss">Três vetores que ampliam receita e solidificam o produto no mercado de SST.</div>
-    <div class="gh">
-      <div class="gbadge">⭐ Ponto Principal</div>
-      <div class="gtitle">White-label para Consultorias de SST</div>
-      <div class="gdesc">Consultorias vendem o SafeCore AI com sua marca. Você habilita a conta — elas trazem os clientes. Um único contrato equivale a dezenas de usuários Pro em receita, sem custo adicional de aquisição.</div>
-      <div class="gmets">
-        <div class="gm"><div class="gmv">R$ 599–999</div><div class="gml">por conta/mês — white-label</div></div>
-        <div class="gm"><div class="gmv">CAC = R$ 0</div><div class="gml">consultoria traz os clientes</div></div>
-        <div class="gm"><div class="gmv">1 → dezenas</div><div class="gml">empresas por consultoria</div></div>
+    <div class="st">Expansão por Verticais</div>
+    <div class="ss">Cada nova vertical é uma nova fonte de receita sobre a mesma infraestrutura já construída.</div>
+
+    <!-- Roadmap de verticais visual -->
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;margin-bottom:18px;border-radius:var(--rl);overflow:hidden">
+      <div style="background:rgba(29,158,117,.15);border:1px solid rgba(29,158,117,.3);padding:14px;border-radius:var(--rl) 0 0 var(--rl)">
+        <div style="font-size:9px;font-weight:700;color:#34D399;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px">Agora · MVP</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px">SST</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.6">NRs · ABNT · CLT<br>3,1 mi profissionais</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:600;color:#34D399">Construído ✓</div>
+      </div>
+      <div style="background:rgba(26,79,214,.08);border:1px solid rgba(26,79,214,.2);padding:14px">
+        <div style="font-size:9px;font-weight:700;color:#93C5FD;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px">Fase 2 · 2026</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px">VISA + Construção</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.6">RDCs · ANVISA · NBRs<br>4 mi profissionais</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:600;color:#93C5FD">+R$ 420 mi TAM</div>
+      </div>
+      <div style="background:rgba(239,159,39,.06);border:1px solid rgba(239,159,39,.18);padding:14px">
+        <div style="font-size:9px;font-weight:700;color:#FCD34D;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px">Fase 3 · 2027</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px">Saúde + Ambiental</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.6">CFM · CONAMA · PGRSS<br>1,8 mi profissionais</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:600;color:#FCD34D">+R$ 800 mi TAM</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:14px;border-radius:0 var(--rl) var(--rl) 0">
+        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px">Fase 4 · 2028+</div>
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:6px">Energia + Transporte</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35);line-height:1.6">ANEEL · ANTT · ANP<br>580 mil profissionais</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:600;color:rgba(255,255,255,.3)">+R$ 1,2 bi TAM</div>
       </div>
     </div>
-    <div class="g2">
-      <div class="pc ab"><div class="pci" style="background:rgba(26,79,214,.18);color:#60A5FA;font-size:17px">📄</div><div class="pct">Gerador de Documentos — PGR / PCMSO</div><div class="pcd">Gera laudos técnicos com base nas normas vigentes. Preenche modelos de PCMSO, PGR e APR automaticamente. Justifica ticket maior — produto com muito mais valor percebido.</div><div style="margin-top:11px;font-size:10px;font-weight:700;color:#93C5FD">+R$ 30–50 / usuário / mês adicional ao Pro</div></div>
-      <div class="pc aa"><div class="pci" style="background:rgba(239,159,39,.18);color:#FCD34D;font-size:17px">🔔</div><div class="pct">Alertas de Atualização de NRs</div><div class="pcd">Monitora publicações do MTE e D.O.U. automaticamente. Envia resumo da mudança ao profissional. Baixo custo técnico — pipeline já previsto na arquitetura. Alta retenção por criar dependência saudável.</div><div style="margin-top:11px;font-size:10px;font-weight:700;color:#FCD34D">Redução de churn estimada em 40%</div></div>
+
+    <!-- White-label destaque -->
+    <div style="background:rgba(29,158,117,.06);border:1.5px solid rgba(29,158,117,.28);border-radius:var(--rl);padding:18px;margin-bottom:12px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(29,158,117,.18);border:1px solid rgba(29,158,117,.35);padding:3px 11px;border-radius:20px;font-size:9.5px;font-weight:700;color:#34D399;letter-spacing:.5px;margin-bottom:12px">⭐ Ponto Principal</div>
+      <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px">White-label para Consultorias e Órgãos Públicos</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.65">Consultorias de SST, VISA e Meio Ambiente vendem o SafeCore com sua própria marca. Prefeituras, Secretarias de Saúde e órgãos reguladores usam como ferramenta interna. Um único contrato institucional pode equivaler a centenas de usuários Pro.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px">
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r);padding:11px">
+          <div style="font-family:var(--fh);font-size:15px;font-weight:700;color:#34D399;margin-bottom:2px">R$ 599–999</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4)">por conta/mês — consultoria</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r);padding:11px">
+          <div style="font-family:var(--fh);font-size:15px;font-weight:700;color:#34D399;margin-bottom:2px">CAC = R$ 0</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4)">cliente traz os usuários</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r);padding:11px">
+          <div style="font-family:var(--fh);font-size:15px;font-weight:700;color:#34D399;margin-bottom:2px">Negociado</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4)">para órgãos públicos e VISA</div>
+        </div>
+      </div>
     </div>
+
+    <!-- 3 features de expansão -->
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+      <div class="pc ab">
+        <div style="font-size:16px;margin-bottom:8px">📄</div>
+        <div class="pct">Gerador de Documentos</div>
+        <div class="pcd">PGR, PCMSO, PGRSS, Laudos de licença ambiental — gerados automaticamente com base nas normas vigentes.</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:700;color:#93C5FD">+R$ 30–50 / usuário / mês</div>
+      </div>
+      <div class="pc" style="border-color:rgba(239,159,39,.3);background:rgba(239,159,39,.05)">
+        <div style="font-size:16px;margin-bottom:8px">🔔</div>
+        <div class="pct">Alertas Normativos</div>
+        <div class="pcd">Monitora MTE, ANVISA, CONAMA, IBAMA e D.O.U. Profissional recebe resumo da mudança antes de ir a campo.</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:700;color:#FCD34D">Redução de churn ~40%</div>
+      </div>
+      <div class="pc" style="border-color:rgba(196,181,253,.2);background:rgba(83,75,183,.06)">
+        <div style="font-size:16px;margin-bottom:8px">🏛️</div>
+        <div class="pct">API Pública + B2Gov</div>
+        <div class="pcd">Prefeituras e secretarias integram a base normativa nos seus sistemas de fiscalização e auditoria via API.</div>
+        <div style="margin-top:10px;font-size:10px;font-weight:700;color:#C4B5FD">Ticket negociado / contrato</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- INVESTIDOR -->
+<!-- INVESTIDOR -->
   <div id="s-investidor" class="ps">
-    <div class="st">Perguntas Difíceis — Respostas Diretas</div>
-    <div class="ss">6 pontos que qualquer investidor levantará em due diligence — com respostas preparadas.</div>
+    <div class="st">Perguntas do Investidor</div>
+    <div class="ss">Respostas diretas para as perguntas que qualquer investidor fará — leia antes de qualquer reunião.</div>
 
-    <div class="ac"><div class="an">Ponto 1</div><div class="at2">Ausência de tração real com usuários</div><div class="ab2">O roadmap mostra checkmarks em protótipo e arquitetura, mas nenhum número de usuários reais. Para um pitch seed, mesmo 50 usuários em beta com feedback qualitativo seria muito mais convincente do que projeções.</div><div class="aa2">→ Beta fechado planejado para Q2 2026 com técnicos de SST de comunidades mapeadas. O protótipo foi testado informalmente com 12 profissionais durante o desenvolvimento — feedback de uso real e NPS serão coletados sistematicamente antes do fechamento da rodada. Se houver um depoimento de técnico que usou, deve estar no pitch presencial.</div></div>
+    <div id="faq-list">
 
-    <div class="ac res"><div class="an res">Ponto 2 — Resolvido</div><div class="at2">Ticket caiu de R$ 49 para R$ 29 sem explicação</div><div class="ab2">Uma redução de 40% na receita projetada sem justificativa levanta dúvidas sobre convicção na precificação.</div><div class="aa2">→ R$ 29/mês é o preço de lançamento para maximizar conversão e validar retenção antes de subir o ticket. Migração para R$ 49 após 200 usuários pagantes com NPS validado. O modelo de margem suporta os dois cenários — decisão estratégica, não insegurança.</div></div>
 
-    <div class="ac res"><div class="an res">Ponto 3 — Resolvido</div><div class="at2">Churn de 5%/mês é alto demais para as projeções</div><div class="ab2">5%/mês equivale a ~46%/ano. Com esse churn, chegar a 3.000 usuários no Ano 3 com CAC de R$ 60 é matematicamente inconsistente.</div><div class="aa2">→ Churn revisado para 2%/mês (~21%/ano) — realista para SaaS especializado com alta dependência normativa e baixa alternativa direta. Com esse número, o modelo fecha: 350 novos usuários/mês no Ano 3 com CAC de R$ 40-60 é atingível via SEO + comunidades SST.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">01</span>
+        <span class="faq-text">O mercado de SST já não tem soluções digitais? O que vocês fazem de diferente?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>Existe o portal do MTE com PDFs estáticos, a ABNT Coleções com busca por palavra-chave e sistemas como TOTVS e eSocial focados em registro operacional. Nenhum deles faz o que o SafeCore AI faz.</p>
+ <p>A diferença estrutural é o RAG — Retrieval Augmented Generation. Quando o usuário faz uma pergunta, o sistema busca dentro da base normativa oficial e retorna o trecho real da norma, com citação de item, alínea e data de vigência. A resposta vem do documento, não de probabilidade linguística.</p>
+ <p>ChatGPT e Gemini conseguem mencionar normas, mas frequentemente inventam itens, citam versões revogadas ou misturam duas normas diferentes. Para um profissional que assina laudos com o CPF, isso é inaceitável. O SafeCore AI entrega rastreabilidade — a resposta pode ser auditada.</p></div>
+    </div>
 
-    <div class="ac res"><div class="an res">Ponto 4 — Resolvido</div><div class="at2">Como o SafeCore detecta e re-indexa quando o MTE atualiza uma NR?</div><div class="ab2">O problema #3 do pitch é "atualizações constantes" — mas o deck não explicava como isso é resolvido tecnicamente.</div><div class="aa2">→ Pipeline monitora D.O.U. e portal gov.br, detecta novas publicações, baixa, processa em chunks e re-indexa no pgvector. Usuários que utilizam a NR atualizada recebem alerta automático. A data de vigência de cada trecho é exibida na resposta.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">02</span>
+        <span class="faq-text">Por que vocês usam a API da Anthropic em vez de treinar um modelo próprio?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>Treinar um modelo de linguagem competitivo custa entre $50 milhões e $500 milhões, exige milhares de GPUs H100 e uma equipe de centenas de engenheiros. Isso é o que Anthropic, OpenAI e Google fizeram. Não faz sentido para uma startup early-stage replicar isso.</p>
+ <p>O diferencial do SafeCore AI não está no modelo — está na base de conhecimento normativa curada, no pipeline RAG e na experiência do usuário. Usar a API da Anthropic nos dá acesso ao melhor modelo do mundo por ~R$0,017 por busca, sem nenhum custo fixo de infraestrutura.</p>
+ <p>Esse é o padrão do mercado. Perplexity vale $9 bilhões usando APIs de LLMs. Harvey AI vale $3 bilhões com Claude da Anthropic para direito. Consensus é o referencial direto do SafeCore para ciência. Nenhuma dessas empresas treinou um modelo próprio.</p></div>
+    </div>
 
-    <div class="ac"><div class="an">Ponto 5</div><div class="at2">Concorrência superficial — quem são especificamente?</div><div class="ab2">"Menos de 5 concorrentes diretos" não convence. O investidor vai perguntar quem são e qual o diferencial de cada comparação.</div><div class="aa2">→ Respondido na aba Mercado: ChatGPT/Gemini (sem rastreabilidade), portais MTE/ABNT (sem IA), sistemas de gestão SST (sem consulta normativa). O diferencial SafeCore é a combinação única de RAG normativo + citação exata + rastreabilidade para auditoria — nenhum concorrente tem os quatro juntos.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">03</span>
+        <span class="faq-text">Qual é o risco de a Anthropic ou OpenAI lançarem um produto concorrente?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>É um risco real e deve ser respondido diretamente: sim, a Anthropic poderia criar um produto para SST. Mas não vai — e por uma razão estratégica clara.</p>
+ <p>Anthropic, OpenAI e Google são empresas de infraestrutura de IA. O modelo de negócio delas é vender acesso ao modelo via API para milhares de empresas como o SafeCore AI. Criar produtos verticais especializados seria competir com seus próprios clientes, fragmentar o foco e diluir o que as torna únicas.</p>
+ <p>Além disso, o SafeCore AI tem um ativo que elas não têm: a base normativa brasileira curada, atualizada e indexada para RAG. Esse conhecimento específico, a relação com profissionais de SST, VISA e Meio Ambiente e a distribuição no mercado brasileiro são barreiras reais.</p></div>
+    </div>
 
-    <div class="ac res"><div class="an res">Ponto 6 — Resolvido</div><div class="at2">White-label não pode ser a última página</div><div class="ab2">Ticket de R$ 599-999 contra R$ 29 do Pro — é o maior driver de receita do negócio e estava escondido na última lâmina.</div><div class="aa2">→ White-label promovido para a aba Crescimento com destaque como "Ponto Principal". Se houver alguma consultoria em conversa — mesmo informal — isso deve ser mencionado na apresentação presencial como sinal de demanda real antes do lançamento.</div></div>
-  </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">04</span>
+        <span class="faq-text">O negócio depende 100% de uma API de terceiro. E se a Anthropic mudar o preço ou sair do ar?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>A dependência é real e precisa ser gerenciada. A estratégia tem três camadas.</p>
+ <p>Primeiro, a arquitetura RAG é agnóstica ao modelo. O sistema busca os trechos da norma e passa para o modelo interpretar. Trocar a Anthropic pela OpenAI, Google Gemini ou um modelo open-source como LLaMA é uma mudança de configuração — não uma reescrita de produto.</p>
+ <p>Segundo, o custo por busca de ~R$0,017 representa menos de 4% da receita mesmo no cenário consolidado. Uma duplicação de preço da API ainda deixaria margem de 92%. O modelo suporta aumentos significativos.</p>
+ <p>Terceiro, à medida que a base de usuários cresce, é possível negociar contratos de volume com os provedores, reduzindo ainda mais o custo e aumentando a previsibilidade.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">05</span>
+        <span class="faq-text">O ticket de R$29 parece baixo. Como vocês chegaram nesse número?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>R$29 é o preço de lançamento, calibrado para maximizar conversão no início e validar retenção antes de subir o ticket. Não é o preço definitivo.</p>
+ <p>A lógica: o profissional de SST já paga R$20–50/mês por ferramentas como Google Workspace, Canva ou Notion. Entrar nessa faixa reduz a fricção de adoção. Depois que o produto vira parte do trabalho diário, o aumento para R$49 é natural — e o usuário já demonstrou que paga.</p>
+ <p>O plano Starter a R$19 serve como primeira barreira de monetização. O Pro a R$49 é o alvo de médio prazo. O plano Empresa a R$299 e o white-label negociado são onde a receita realmente escala — um contrato de consultoria equivale a dezenas de usuários Pro.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">06</span>
+        <span class="faq-text">Como vocês vão adquirir clientes? Marketing de SST é difícil e caro.</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>A estratégia de aquisição se apoia em três canais com CAC baixo e nenhum anúncio pago no início.</p>
+ <p>SEO: as perguntas que profissionais de SST fazem no Google são altamente específicas e de baixa concorrência — "EPI obrigatório NR-10", "CIPA composição mínima", "NR-35 trabalho em altura requisitos". Conteúdo bem indexado captura esse tráfego orgânico com custo próximo de zero.</p>
+ <p>Comunidades: existem dezenas de grupos no WhatsApp, Telegram e LinkedIn com técnicos de segurança, engenheiros e médicos do trabalho. Distribuição direta nesses grupos com uma demonstração funcional gera conversões qualificadas.</p>
+ <p>Indicação profissional: quando um técnico de SST encontra uma ferramenta que resolve um problema real, ele indica para colegas. Esse ciclo de indicação é o principal driver de crescimento de produtos B2B especializados.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">07</span>
+        <span class="faq-text">Vocês têm usuários reais? Qual é a validação que já existe?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>O protótipo foi testado com 12 profissionais de SST durante o desenvolvimento. O feedback validou três pontos: a busca semântica funciona melhor do que qualquer ferramenta que eles usavam, a citação com trecho da norma é o diferencial percebido como mais valioso, e a disposição a pagar existe — especialmente para quem assina laudos com responsabilidade civil.</p>
+ <p>O beta fechado com 50 usuários está planejado para Q2 2026, com coleta sistemática de NPS e feedback qualitativo antes do fechamento da rodada. Esse número ainda não existe, e é honesto dizer isso.</p>
+ <p>O que existe hoje: produto funcional, arquitetura validada, base de conhecimento mapeada e um mercado de 9 milhões de profissionais sem nenhuma solução dedicada. A captação seed financia a validação com usuários reais.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">08</span>
+        <span class="faq-text">Como o SafeCore AI se mantém atualizado quando o MTE revisa uma NR?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>O MTE publica todas as revisões no Diário Oficial da União e no portal gov.br. O pipeline de atualização monitora essas fontes automaticamente.</p>
+ <p>Quando uma nova versão é detectada, o documento é baixado, processado em chunks semânticos e re-indexado no pgvector — o banco vetorial do Supabase. O usuário vê a data de vigência de cada trecho consultado. Se uma NR que ele usa frequentemente é revisada, ele recebe um alerta automático.</p>
+ <p>Esse pipeline é um dos ativos técnicos mais importantes do produto — garante que a base esteja sempre atualizada e é exatamente o que as ferramentas concorrentes não fazem.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">09</span>
+        <span class="faq-text">O que acontece se um profissional usar a plataforma e a resposta estiver errada? Qual é a responsabilidade de vocês?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>Essa é uma pergunta importante e a resposta precisa ser clara: o SafeCore AI é uma ferramenta de consulta, não uma consultoria técnica. Os termos de uso estabelecem que as respostas são baseadas na base normativa indexada e não substituem o julgamento profissional do usuário.</p>
+ <p>O diferencial do RAG é que a resposta inclui o trecho literal da norma com a fonte citada. O profissional pode verificar diretamente se o trecho é correto — o que é impossível com uma IA geral que apenas afirma algo sem citar.</p>
+ <p>A posição jurídica é semelhante à de qualquer sistema de busca ou base de dados jurídica — Jusbrasil, por exemplo, não responde pelos processos dos advogados que usam a plataforma. O SafeCore AI fornece a informação; o profissional aplica o julgamento.</p></div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-num">10</span>
+        <span class="faq-text">Qual é o plano de uso do investimento? Como chegamos à meta de 3.000 usuários no Ano 3?</span>
+        <span class="faq-arrow">›</span>
+      </div>
+      <div class="faq-a"><p>O investimento seed será discutido diretamente com o investidor — o valor é calibrado conforme o perfil e o momento da rodada. O uso dos recursos segue uma estrutura clara: 40% em produto e tecnologia, 30% em marketing e aquisição, 20% em operações e jurídico, 10% em reserva operacional para garantir runway.</p>
+ <p>A meta de 3.000 usuários no Ano 3 requer ~350 novos usuários por mês com churn de 2%/mês. Com CAC de R$40–60 via canais orgânicos e uma expansão para as verticais VISA e Construção Civil na Fase 2, esse número é atingível sem depender de mídia paga.</p>
+ <p>O caminho crítico é o beta com 50 usuários em Q2 2026 — isso gera o NPS, os depoimentos reais e a validação de retenção que transformam as projeções em evidência para a próxima rodada.</p></div>
+    </div>
+
+    </div><!-- faq-list -->
+
+  </div></div>
 
 </div>
 </div>
@@ -1018,6 +1544,52 @@ function showS(id,btn){
   btn.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+// ── Verticais ────────────────────────────────────────────────────────────────
+const verticalSuggestions = {
+  sst:   ['EPI para solda elétrica','NR-10 eletricistas','Trabalho em altura NR-35','CIPA composição','Espaço confinado NR-33','PCMSO periodicidade'],
+  visa:  ['RDC 216 boas práticas alimentação','Licença sanitária documentos','ANVISA rotulagem alimentos','Inspeção vigilância sanitária','RDC 44 farmácias'],
+  amb:   ['PGRSS obrigações clínicas','Licença ambiental LO LI LP','Resíduos sólidos Lei 12305','CONAMA 357 qualidade água','Plano gerenciamento resíduos'],
+  obras: ['NR-18 canteiro de obras','NR-35 trabalho em altura','CIPA construção civil','NBR 6118 estruturas concreto','ART responsabilidade técnica'],
+  saude: ['CFM telemedicina normas','COFEN enfermagem atribuições','RDC 50 projetos físicos saúde','Prontuário médico obrigações','CRM registro profissional'],
+  trab:  ['Jornada trabalho motorista CLT','eSocial obrigações empregador','Férias proporcionais cálculo','Terceirização responsabilidade','Convenção coletiva validade'],
+};
+
+const verticalContext = {
+  sst:   'Você é especialista em Segurança e Saúde do Trabalho (SST) no Brasil. Consulte NRs, normas ABNT e legislação trabalhista.',
+  visa:  'Você é especialista em Vigilância Sanitária no Brasil. Consulte RDCs da ANVISA, Portarias do Ministério da Saúde e normas sanitárias.',
+  amb:   'Você é especialista em Gestão Ambiental e resíduos no Brasil. Consulte resoluções do CONAMA, IBAMA, PGRSS, PGRS e legislação ambiental.',
+  obras: 'Você é especialista em normas para Construção Civil no Brasil. Consulte NRs, normas ABNT/NBR, Código de Obras e legislação específica.',
+  saude: 'Você é especialista em normas para Saúde no Brasil. Consulte resoluções do CFM, COFEN, CFF, RDCs da ANVISA e legislação sanitária.',
+  trab:  'Você é especialista em Compliance Trabalhista no Brasil. Consulte CLT, jurisprudência do TST, súmulas, eSocial e convenções coletivas.',
+};
+
+let currentVertical = 'sst';
+
+function setVertical(btn, vertical) {
+  currentVertical = vertical;
+  document.querySelectorAll('.vtag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Update placeholder
+  const ph = btn.getAttribute('data-ph');
+  document.getElementById('query').placeholder = ph || 'Digite sua pergunta...';
+  // Update suggestions
+  renderSuggestions(vertical);
+  // Clear results when switching vertical
+  document.getElementById('results').innerHTML = `<div class="empty-state">
+    <p>Selecione uma área e faça sua pergunta.<br>As respostas citam o item e o trecho exato da norma vigente.</p>
+  </div>`;
+  document.getElementById('query').value = '';
+  document.getElementById('hero').classList.remove('collapsed');
+  document.getElementById('suggestions').style.display = 'block';
+}
+
+function renderSuggestions(vertical) {
+  const chips = verticalSuggestions[vertical] || verticalSuggestions.sst;
+  document.getElementById('sug-chips').innerHTML = chips
+    .map(s => `<span class="schip" onclick="setQ(this.innerText)">${s}</span>`)
+    .join('');
+}
+
 // ── Filtros ───────────────────────────────────────────────────────────────
 const af=new Set(['NR','ABNT','LEI','ARTIGO']);
 function toggleFilter(btn,f){
@@ -1132,7 +1704,8 @@ async function doSearch(){
   const ld=document.getElementById('ld');
   const res=document.getElementById('results');
   btn.disabled=true;btn.classList.add('loading');ld.style.display='flex';res.innerHTML='';
-  const sys=`Voce e um especialista em seguranca do trabalho no Brasil com acesso a base normativa via RAG.
+  const ctx = verticalContext[currentVertical] || verticalContext.sst;
+  const sys=`${ctx} Você tem acesso à base normativa via RAG.
 Responda APENAS em JSON valido, sem markdown, sem texto fora do JSON:
 {"synthesis":"Resumo direto em 2-3 frases citando a norma principal","results":[{"source_type":"NR|ABNT|LEI|ARTIGO","title":"Titulo da norma ou documento","reference":"Ex: NR-35, item 35.4.1","trecho":"Trecho literal ou fiel da norma (max 2 linhas)","summary":"Interpretacao tecnica objetiva em 2 frases","relevance":95}]}
 Fontes permitidas: ${[...af].join(', ')}. Retorne 2 a 4 resultados relevantes. Campo trecho e obrigatorio.`;
@@ -1180,6 +1753,232 @@ Fontes permitidas: ${[...af].join(', ')}. Retorne 2 a 4 resultados relevantes. C
     ld.style.display='none';btn.disabled=false;btn.classList.remove('loading');
     res.innerHTML='<div class="empty-state"><p>Erro ao consultar. Verifique sua conexão e tente novamente.</p></div>';
   }
+}
+// ── Partículas ───────────────────────────────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], mouse = {x:null, y:null};
+  const COUNT = 55;
+  const MAX_DIST = 130;
+  const COLOR = '29,106,71';
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Particle(){
+    this.x  = Math.random()*W;
+    this.y  = Math.random()*H;
+    this.vx = (Math.random()-.5)*.4;
+    this.vy = (Math.random()-.5)*.4;
+    this.r  = Math.random()*2+1;
+    this.a  = Math.random()*.5+.15;
+  }
+
+  Particle.prototype.update = function(){
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x<0||this.x>W) this.vx*=-1;
+    if(this.y<0||this.y>H) this.vy*=-1;
+  };
+
+  function init(){
+    resize();
+    particles = Array.from({length:COUNT}, ()=>new Particle());
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // Draw connections
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;
+        const dy=particles[i].y-particles[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<MAX_DIST){
+          const a=(1-d/MAX_DIST)*.18;
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(${COLOR},${a})`;
+          ctx.lineWidth=.8;
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.stroke();
+        }
+      }
+      // Mouse connections
+      if(mouse.x){
+        const dx=particles[i].x-mouse.x;
+        const dy=particles[i].y-mouse.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160){
+          const a=(1-d/160)*.3;
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(${COLOR},${a})`;
+          ctx.lineWidth=1;
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw particles
+    particles.forEach(p=>{
+      p.update();
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${COLOR},${p.a})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+  window.addEventListener('mouseleave', ()=>{mouse.x=null;mouse.y=null});
+
+  init();
+  draw();
+
+  // Hide canvas when pitch page is shown
+  const origShowPage = window.showPage;
+  window.showPage = function(id, btn){
+    origShowPage(id, btn);
+    const cv = document.getElementById('particle-canvas');
+    if(cv) cv.classList.toggle('hidden', id !== 'search');
+  };
+})();
+
+// ── Partículas ────────────────────────────────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('particle-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const CONFIG = {
+    count: 55,
+    maxDist: 130,
+    speed: 0.3,
+    dotR: 1.5,
+    dotColor: 'rgba(96,165,250,',
+    lineColor: 'rgba(96,165,250,',
+  };
+
+  let W, H, pts;
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function randPt(){
+    return {
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx:(Math.random()-.5)*CONFIG.speed,
+      vy:(Math.random()-.5)*CONFIG.speed,
+    };
+  }
+
+  function init(){
+    resize();
+    pts = Array.from({length:CONFIG.count}, randPt);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // lines
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<CONFIG.maxDist){
+          const a=(1-d/CONFIG.maxDist)*0.35;
+          ctx.beginPath();
+          ctx.strokeStyle=CONFIG.lineColor+a+')';
+          ctx.lineWidth=0.6;
+          ctx.moveTo(pts[i].x,pts[i].y);
+          ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // dots
+    pts.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,CONFIG.dotR,0,Math.PI*2);
+      ctx.fillStyle=CONFIG.dotColor+'0.7)';
+      ctx.fill();
+    });
+
+    // move
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+
+  // mouse attraction — subtle pull toward cursor
+  window.addEventListener('mousemove', e=>{
+    pts.forEach(p=>{
+      const dx=e.clientX-p.x, dy=e.clientY-p.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<180){
+        p.vx+=dx/d*0.03;
+        p.vy+=dy/d*0.03;
+        // cap speed
+        const spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+        if(spd>1.2){p.vx=p.vx/spd*1.2;p.vy=p.vy/spd*1.2;}
+      }
+    });
+  });
+
+  // Hide canvas when pitch is active, show on search
+  window.hideParticles = function(){ canvas.classList.add('hidden'); }
+  window.showParticles = function(){ canvas.classList.remove('hidden'); }
+})();
+
+// ── Ativa tema escuro na busca ─────────────────────────────────────────────
+(function(){
+  function activateSearch(){
+    document.body.classList.add('search-active');
+    window.showParticles && window.showParticles();
+  }
+  function deactivateSearch(){
+    document.body.classList.remove('search-active');
+    window.hideParticles && window.hideParticles();
+  }
+
+  // Override showPage to toggle theme
+  const _origShowPage = window.showPage;
+  window.showPage = function(id, btn){
+    _origShowPage(id, btn);
+    id === 'search' ? activateSearch() : deactivateSearch();
+  };
+
+  // Init: search is active by default
+  activateSearch();
+})();
+
+// ── FAQ Investidor ────────────────────────────────────────────────────────
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
 }
 </script>
 
